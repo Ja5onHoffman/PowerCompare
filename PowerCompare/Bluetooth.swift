@@ -16,9 +16,9 @@ open class Bluetooth: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, 
     
     @Published var names = [String]()
     @Published var peripherals = [CBPeripheral]()
-//    @Published var deviceList = [Device]()
+    @Published var deviceList = [Device]()
     
-    @Published var deviceList = [Device(name: "Wahoo Kickr"), Device(name: "Favero Assioma")]
+//    @Published var deviceList = [Device(name: "Wahoo Kickr"), Device(name: "Favero Assioma")]
     
     var centralManager: CBCentralManager!
     let powerMeterServiceCBUUID = CBUUID(string: "0x1818")
