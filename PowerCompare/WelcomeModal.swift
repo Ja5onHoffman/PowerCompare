@@ -32,16 +32,11 @@ struct WelcomeModal: View {
                         Button("View Available Devices") {
                             self.showingList.toggle()
                         }
-                        .sheet(isPresented: $showingList) {
+                        .sheet(isPresented: $showingList, onDismiss: {
+                            self.$showingModal.wrappedValue = false
+                        }, content: {
                             DeviceListView(isPresented: $showingList)
-                        }.padding()
-//                        Button(action: {
-//                            self.sheet(isPresented: self.$showingList, content: {
-//                                DeviceListView(isPresented: $showingList)
-//                            })
-//                        }, label: {
-//                            Text("View Available Devices")
-//                        }).padding()
+                        }).padding()
                     }
                     .frame(width: 300, height: 200)
                     .background(Color.white)

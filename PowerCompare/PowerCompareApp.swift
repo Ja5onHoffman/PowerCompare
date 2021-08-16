@@ -12,6 +12,7 @@ struct PowerCompareApp: App {
     var body: some Scene {
         WindowGroup {
             PowerView()
+                .environmentObject(Bluetooth())
         }
     }
 }

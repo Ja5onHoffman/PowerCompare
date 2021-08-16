@@ -27,7 +27,9 @@ struct PowerView: View {
     @EnvironmentObject var bt: Bluetooth
 //    @State var data: PowerData
     @State var showModal = true
-    @State var showList = false 
+    @State var showList = false
+    var deviceOne = ""
+    var deviceTwo = ""
     
     // placeholder
     @State var deviceConnected = false
@@ -58,7 +60,17 @@ struct PowerView: View {
                 }
                 
                 Spacer()
+                HStack {
+                    Text("Device 1")
+                        .padding()
+                    Spacer()
+                }
                 LineChartView(data: sampleData, style: style)
+                HStack {
+                    Text("Device 2")
+                        .padding()
+                    Spacer()
+                }
                 LineChartView(data: sampleData.reversed(), style: style)
             }.fullScreenCover(isPresented: $showModal, content: {
                 WelcomeModal(showingModal: $showModal)

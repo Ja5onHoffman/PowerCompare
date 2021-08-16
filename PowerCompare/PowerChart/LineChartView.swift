@@ -26,3 +26,6 @@ public struct LineChartView: View {
         }
     }
 }
+
+
+

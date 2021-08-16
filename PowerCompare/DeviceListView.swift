@@ -13,20 +13,11 @@ import class CoreBluetooth.CBPeripheral
 
 struct DeviceListView: View {
     
-    @State var selected: UUID?
+//    @State var selected: UUID?
     @Binding var isPresented: Bool
-//    @Binding var name: String
-    @Environment(\.managedObjectContext) var moc
+//    @Environment(\.managedObjectContext) var moc
     @EnvironmentObject var bt: Bluetooth
-
     
-    struct DeviceRow: View {
-        let device: Bluetooth.Device
-        
-        var body: some View {
-            Text(device.name)
-        }
-    }
     
     func connectToPeripheralWithName(_ name: String) {
         for i in bt.peripherals {
@@ -43,15 +34,28 @@ struct DeviceListView: View {
     }
     
     var body: some View {
-
-        List {
-            Section(header: Text("Devices")) {
-                ForEach(self.bt.deviceList) { d in
-                    DeviceRow(device: d).tag(d.name)
+        
+        NavigationView {
+            List {
+                Section(header: Text("Device List")) {
+                    ForEach(self.bt.deviceList) { d in
+                        DeviceRow(device: d, connectToPeripheralWithName: connectToPeripheralWithName(_:))
+                    }
                 }
             }
+            .navigationTitle(Text("Devices"))
+            .toolbar {
+                // Each row will have a disconnect button instead
+                Button(action: {
+                    self.isPresented = false
+                }, label: {
+                    Text("Cancel")
+                        .fontWeight(.heavy)
+                })
+            }
         }
-    
+        
+
 //        NavigationView {
 //            List(self.bt.deviceList, selection: $selected) { d in
 //                DeviceRow(device: d).tag(d.name)
@@ -79,6 +83,35 @@ struct DeviceListView: View {
     
 
     
+}
+
+struct ConnectionButton: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .padding()
+            .background(Color.blue)
+            .clipShape(Capsule())
+            .foregroundColor(.white)
+    }
+}
+
+struct DeviceRow: View {
+    let device: Bluetooth.Device
+    let connectToPeripheralWithName: (_ name: String) -> Void
+    
+    var body: some View {
+        HStack {
+            Text(device.name)
+            Spacer()
+            Button(action: {
+                connectToPeripheralWithName(device.name)
+            }, label: {
+                Text("Connect")
+                    .fontWeight(.heavy)
+            }).buttonStyle(ConnectionButton())
+        }
+
+    }
 }
 
 
