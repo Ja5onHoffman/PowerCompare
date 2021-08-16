@@ -32,45 +32,71 @@ struct PowerView: View {
     var deviceTwo = ""
     
     // placeholder
-    @State var deviceConnected = false
+    @State var deviceConnected = true
     
     var body: some View {
+        
+        
             VStack {
-                
                 if deviceConnected {
                     HStack {
                         Spacer()
-                        Button(action: {}, label: {
-                            Text("Disconnect")
-                                .bold()
-                                .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 20.0))
-                        })
+                        Button("Disconnect") {
+                            self.showList.toggle()
+                        }
+                        .sheet(isPresented: $showList, onDismiss: {
+                            self.$showList.wrappedValue = false
+                        }, content: {
+                            DeviceListView(isPresented: $showList)
+                        }).padding()
+                        .font(.bold(.body)())
                     }
                 } else {
                     Spacer()
+                    HStack {
+                        Spacer()
+                        Button("Connect Devices") {
+                            self.showList.toggle()
+                        }
+                        .sheet(isPresented: $showList, onDismiss: {
+                            self.$showList.wrappedValue = false
+                        }, content: {
+                            DeviceListView(isPresented: $showList)
+                        }).padding()
+                    }
                 }
                 
-                VStack {
-                    RoundedRectangle(cornerRadius: 50)
-                                        .fill(Color.blue)
-                        .padding()
-                    RoundedRectangle(cornerRadius: 50)
-                                        .fill(Color.green)
-                        .padding()
-                }
-                
-                Spacer()
                 HStack {
-                    Text("Device 1")
+                    Text(bt.p1Name!)
                         .padding()
                     Spacer()
                 }
+                
+                Text(String(describing: bt.$p1Power))
+                    .foregroundColor(.white)
+                    .font(.largeTitle)
+                    .aspectRatio(contentMode: .fill)
+                    .frame(maxWidth: .infinity, minHeight: 50)
+                    .background(RoundedRectangle(cornerRadius: 50)
+                                .fill(Color.blue))
+                    .padding()
+//                RoundedRectangle(cornerRadius: 50)
+//                    .fill(Color.blue)
+//                    .padding()
                 LineChartView(data: sampleData, style: style)
                 HStack {
-                    Text("Device 2")
+                    Text(bt.p2Name!)
                         .padding()
                     Spacer()
                 }
+                Text(String(describing: bt.$p2Power))
+                    .foregroundColor(.white)
+                    .font(.largeTitle)
+                    .aspectRatio(contentMode: .fill)
+                    .frame(maxWidth: .infinity, minHeight: 50)
+                    .background(RoundedRectangle(cornerRadius: 50)
+                                    .fill(Color.green))
+                    .padding()
                 LineChartView(data: sampleData.reversed(), style: style)
             }.fullScreenCover(isPresented: $showModal, content: {
                 WelcomeModal(showingModal: $showModal)
