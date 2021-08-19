@@ -14,14 +14,6 @@ let powerMeasurementCharacteristicCBUUID = CBUUID(string: "0x2A63")
 
 struct PowerView: View {
     
-    let style = LineChartStyle(
-        labelColor: .blue,
-        indicatorPointColor: .blue,
-        showingIndicatorLineColor: .blue,
-        flatTrendLineColor: .blue,
-        uptrendLineColor: .blue,
-        downtrendLineColor: .blue)
-    
     let sampleData: [Double] = [500.0, 200.0, 200.0, 600.0, 800.0, 100.0, 200.0, 300.0, 200.0]
     
     @EnvironmentObject var bt: Bluetooth
@@ -84,7 +76,8 @@ struct PowerView: View {
 //                RoundedRectangle(cornerRadius: 50)
 //                    .fill(Color.blue)
 //                    .padding()
-                LineChartView(data: sampleData, style: style)
+                LineView()
+//                LineChartView(data: sampleData, style: style)
                 HStack {
                     Text(bt.p2Name!)
                         .padding()
@@ -98,7 +91,8 @@ struct PowerView: View {
                     .background(RoundedRectangle(cornerRadius: 50)
                                     .fill(Color.green))
                     .padding()
-                LineChartView(data: sampleData.reversed(), style: style)
+                LineView()
+//                LineChartView(data: sampleData.reversed(), style: style)
             }.fullScreenCover(isPresented: $showModal, content: {
                 WelcomeModal(showingModal: $showModal)
             })

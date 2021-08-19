@@ -7,13 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		310B5EB426CED44700C984F3 /* LineGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310B5EB326CED44700C984F3 /* LineGraph.swift */; };
 		31D210FD26B19A3F001C3AC8 /* PowerCompareApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D210FC26B19A3F001C3AC8 /* PowerCompareApp.swift */; };
 		31D2110126B19A41001C3AC8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31D2110026B19A41001C3AC8 /* Assets.xcassets */; };
 		31D2110426B19A41001C3AC8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31D2110326B19A41001C3AC8 /* Preview Assets.xcassets */; };
-		31D2110D26B19C60001C3AC8 /* LineChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D2110C26B19C60001C3AC8 /* LineChartView.swift */; };
-		31D2111026B19D2E001C3AC8 /* LinePath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D2110F26B19D2E001C3AC8 /* LinePath.swift */; };
 		31D2111226B1E092001C3AC8 /* LineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D2111126B1E092001C3AC8 /* LineView.swift */; };
-		31D2111426B1E33A001C3AC8 /* LineChartStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D2111326B1E33A001C3AC8 /* LineChartStyle.swift */; };
 		31D2111626B1E7CC001C3AC8 /* PowerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D2111526B1E7CC001C3AC8 /* PowerView.swift */; };
 		31D2111826B20D8C001C3AC8 /* Bluetooth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D2111726B20D8C001C3AC8 /* Bluetooth.swift */; };
 		31D2111A26B20DCE001C3AC8 /* PowerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D2111926B20DCE001C3AC8 /* PowerData.swift */; };
@@ -22,15 +20,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		310B5EB326CED44700C984F3 /* LineGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineGraph.swift; sourceTree = "<group>"; };
 		31D210F926B19A3F001C3AC8 /* PowerCompare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PowerCompare.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		31D210FC26B19A3F001C3AC8 /* PowerCompareApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerCompareApp.swift; sourceTree = "<group>"; };
 		31D2110026B19A41001C3AC8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		31D2110326B19A41001C3AC8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		31D2110526B19A41001C3AC8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		31D2110C26B19C60001C3AC8 /* LineChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChartView.swift; sourceTree = "<group>"; };
-		31D2110F26B19D2E001C3AC8 /* LinePath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinePath.swift; sourceTree = "<group>"; };
 		31D2111126B1E092001C3AC8 /* LineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineView.swift; sourceTree = "<group>"; };
-		31D2111326B1E33A001C3AC8 /* LineChartStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChartStyle.swift; sourceTree = "<group>"; };
 		31D2111526B1E7CC001C3AC8 /* PowerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerView.swift; sourceTree = "<group>"; };
 		31D2111726B20D8C001C3AC8 /* Bluetooth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bluetooth.swift; sourceTree = "<group>"; };
 		31D2111926B20DCE001C3AC8 /* PowerData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerData.swift; sourceTree = "<group>"; };
@@ -93,8 +89,7 @@
 		31D2110B26B19C42001C3AC8 /* PowerChart */ = {
 			isa = PBXGroup;
 			children = (
-				31D2110C26B19C60001C3AC8 /* LineChartView.swift */,
-				31D2111326B1E33A001C3AC8 /* LineChartStyle.swift */,
+				310B5EB326CED44700C984F3 /* LineGraph.swift */,
 				31D2110E26B19D10001C3AC8 /* Supporting */,
 			);
 			path = PowerChart;
@@ -103,7 +98,6 @@
 		31D2110E26B19D10001C3AC8 /* Supporting */ = {
 			isa = PBXGroup;
 			children = (
-				31D2110F26B19D2E001C3AC8 /* LinePath.swift */,
 				31D2111126B1E092001C3AC8 /* LineView.swift */,
 			);
 			path = Supporting;
@@ -181,12 +175,10 @@
 				31D2111826B20D8C001C3AC8 /* Bluetooth.swift in Sources */,
 				31D2111A26B20DCE001C3AC8 /* PowerData.swift in Sources */,
 				31D210FD26B19A3F001C3AC8 /* PowerCompareApp.swift in Sources */,
-				31D2111026B19D2E001C3AC8 /* LinePath.swift in Sources */,
+				310B5EB426CED44700C984F3 /* LineGraph.swift in Sources */,
 				31D2111E26B2FE79001C3AC8 /* WelcomeModal.swift in Sources */,
 				31D2111226B1E092001C3AC8 /* LineView.swift in Sources */,
 				31D2111626B1E7CC001C3AC8 /* PowerView.swift in Sources */,
-				31D2111426B1E33A001C3AC8 /* LineChartStyle.swift in Sources */,
-				31D2110D26B19C60001C3AC8 /* LineChartView.swift in Sources */,
 				31D2111C26B2FD59001C3AC8 /* DeviceListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
