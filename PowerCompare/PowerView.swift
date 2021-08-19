@@ -32,7 +32,7 @@ struct PowerView: View {
     var deviceTwo = ""
     
     // placeholder
-    @State var deviceConnected = true
+    @State var deviceConnected = false
     
     var body: some View {
         
@@ -43,6 +43,7 @@ struct PowerView: View {
                         Spacer()
                         Button("Disconnect") {
                             self.showList.toggle()
+                            bt.disconnectAll()
                         }
                         .sheet(isPresented: $showList, onDismiss: {
                             self.$showList.wrappedValue = false

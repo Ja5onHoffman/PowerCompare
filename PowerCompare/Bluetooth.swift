@@ -99,6 +99,12 @@ open class Bluetooth: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, 
         centralManager.cancelPeripheralConnection(peripheral)
     }
     
+    func disconnectAll() {
+        for p in peripherals {
+            centralManager.cancelPeripheralConnection(p)
+        }
+    }
+    
     func setDeviceNumber(_ number: Int) {
         self.deviceNumber = number
     }
@@ -198,6 +204,7 @@ open class Bluetooth: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, 
     public func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
         if let p = peripherals.firstIndex(of: peripheral) {
             peripherals.remove(at: p)
+            print("\(p.description) disconnected")
         }
 
     }

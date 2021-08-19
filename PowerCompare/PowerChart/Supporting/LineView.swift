@@ -11,7 +11,6 @@ public struct LineView: View {
     public var data: [Double]
     public var style: LineChartStyle
     
-    
     @Binding var indexPosition: Int
     @State var IndicatorPointPosition: CGPoint = .zero
     @State var pathPoints = [CGPoint]()
