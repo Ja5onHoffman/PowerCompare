@@ -28,8 +28,7 @@ struct PowerView: View {
     
     var body: some View {
         
-        
-            VStack {
+        Group {
                 if deviceConnected {
                     HStack {
                         Spacer()
@@ -41,11 +40,10 @@ struct PowerView: View {
                             self.$showList.wrappedValue = false
                         }, content: {
                             DeviceListView(isPresented: $showList)
-                        }).padding()
+                        })
                         .font(.bold(.body)())
                     }
                 } else {
-                    Spacer()
                     HStack {
                         Spacer()
                         Button("Connect Devices") {
@@ -55,44 +53,51 @@ struct PowerView: View {
                             self.$showList.wrappedValue = false
                         }, content: {
                             DeviceListView(isPresented: $showList)
-                        }).padding()
+                        }).padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 10.0))
                     }
                 }
                 
-                HStack {
-                    Text(bt.p1Name!)
-                        .padding()
-                    Spacer()
+            VStack {
+                VStack {
+                    HStack {
+                        Text(bt.p1Name!)
+                            .font(.title2)
+                            .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 0))
+                        Spacer()
+                    }
+                    Text(String(describing: bt.p1Power.value))
+                        .foregroundColor(.white)
+                        .font(.largeTitle)
+                        .aspectRatio(contentMode: .fit)
+                        .frame(maxWidth: .infinity, minHeight: 50)
+                        .background(RoundedRectangle(cornerRadius: 50)
+                                    .fill(Color.blue))
+                    LineView()
+                        .aspectRatio(1.6, contentMode: .fit)
                 }
                 
-                Text(String(describing: bt.$p1Power))
-                    .foregroundColor(.white)
-                    .font(.largeTitle)
-                    .aspectRatio(contentMode: .fill)
-                    .frame(maxWidth: .infinity, minHeight: 50)
-                    .background(RoundedRectangle(cornerRadius: 50)
-                                .fill(Color.blue))
-                    .padding()
-//                RoundedRectangle(cornerRadius: 50)
-//                    .fill(Color.blue)
-//                    .padding()
-                LineView()
-//                LineChartView(data: sampleData, style: style)
-                HStack {
-                    Text(bt.p2Name!)
-                        .padding()
-                    Spacer()
+
+                VStack {
+                    HStack {
+                        Text(bt.p2Name!)
+                            .font(.title2)
+                            .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 0))
+                        Spacer()
+                    }
+                    Text(String(describing: bt.p2Power.value))
+                        .foregroundColor(.white)
+                        .font(.largeTitle)
+                        .aspectRatio(contentMode: .fit)
+                        .frame(maxWidth: .infinity, minHeight: 50)
+                        .background(RoundedRectangle(cornerRadius: 50)
+                                        .fill(Color.green))
+                    LineView()
+                        .aspectRatio(1.5, contentMode: .fit)
                 }
-                Text(String(describing: bt.$p2Power))
-                    .foregroundColor(.white)
-                    .font(.largeTitle)
-                    .aspectRatio(contentMode: .fill)
-                    .frame(maxWidth: .infinity, minHeight: 50)
-                    .background(RoundedRectangle(cornerRadius: 50)
-                                    .fill(Color.green))
-                    .padding()
-                LineView()
-//                LineChartView(data: sampleData.reversed(), style: style)
+            }
+    
+    
+
             }.fullScreenCover(isPresented: $showModal, content: {
                 WelcomeModal(showingModal: $showModal)
             })

@@ -10,7 +10,7 @@ import SwiftUI
 
 struct PowerData: Identifiable, Hashable {
     let id = UUID()
-    var value: Double 
+    var value: Double
     let device: Int = 0
 }
 

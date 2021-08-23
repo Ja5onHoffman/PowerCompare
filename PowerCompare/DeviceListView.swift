@@ -34,7 +34,6 @@ struct DeviceListView: View {
     }
     
     var body: some View {
-        
         NavigationView {
             List {
                 Section(header: Text("Device List")) {
@@ -53,32 +52,9 @@ struct DeviceListView: View {
                         .fontWeight(.heavy)
                 })
             }
-        }
-        
-
-//        NavigationView {
-//            List(self.bt.deviceList, selection: $selected) { d in
-//                DeviceRow(device: d).tag(d.name)
-//            }
-//        }.navigationBarTitle(Text("Devices"))
-        
-        
-//        List(self.bt.deviceList, selection: $selected) { d in
-//            DeviceRow(device: d).tag(d.name)
-//        }.environment(\.editMode, .constant(.active))
-//    .navigationBarTitle(Text("Choose a Device"))
-//            .navigationBarItems(trailing: Button(action: {
-//                self.isPresented = false
-//                for i in self.bt.deviceList {
-//                    if self.selected!.uuidString == i.id.uuidString {
-//                        self.connectToPeripheralWithName(i.name)
-//                        self.name = i.name
-//                    }
-//                }
-//            }, label: {
-//                Text("Connect")
-//                    .fontWeight(.heavy)
-//            }))
+        }.onAppear(perform: {
+            self.bt.scan()
+        })
     }
     
 

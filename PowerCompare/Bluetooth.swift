@@ -35,8 +35,8 @@ open class Bluetooth: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, 
     @Published var p1Power = PowerData(value: 0)
     @Published var p2Power = PowerData(value: 0)
     
-    @Published var p1Name: String? = "Device 1"
-    @Published var p2Name: String? = "Device 2"
+    @Published var p1Name: String? = "Awaiting Connection"
+    @Published var p2Name: String? = "Awaiting Connection"
 
     public override init() {
         super.init()
