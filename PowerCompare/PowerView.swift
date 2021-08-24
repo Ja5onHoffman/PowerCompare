@@ -65,18 +65,17 @@ struct PowerView: View {
                             .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 0))
                         Spacer()
                     }
-                    Text(String(describing: bt.p1Power.value))
+                    Text(String(describing: bt.hrInstant))
+//                    Text(String(describing: bt.p1Power))
                         .foregroundColor(.white)
                         .font(.largeTitle)
                         .aspectRatio(contentMode: .fit)
                         .frame(maxWidth: .infinity, minHeight: 50)
                         .background(RoundedRectangle(cornerRadius: 50)
                                     .fill(Color.blue))
-                    LineView()
-                        .aspectRatio(1.6, contentMode: .fit)
+
                 }
                 
-
                 VStack {
                     HStack {
                         Text(bt.p2Name!)
@@ -88,12 +87,26 @@ struct PowerView: View {
                         .foregroundColor(.white)
                         .font(.largeTitle)
                         .aspectRatio(contentMode: .fit)
-                        .frame(maxWidth: .infinity, minHeight: 50)
+                        .frame(maxWidth: .infinity, minHeight: 60)
                         .background(RoundedRectangle(cornerRadius: 50)
                                         .fill(Color.green))
                     LineView()
                         .aspectRatio(1.5, contentMode: .fit)
+                }.padding(EdgeInsets(top: 10, leading: 0, bottom: 0, trailing: 0))
+                
+                HStack {
+                    Text("Difference")
+                        .font(.title)
+                        .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 0))
                 }
+                Text(String(describing: bt.powerDif().0))
+                    .foregroundColor(.white)
+                    .font(.system(size: 50))
+                    .aspectRatio(contentMode: .fill)
+                    .frame(maxWidth: .infinity, minHeight: 200
+                    )
+                    .background(RoundedRectangle(cornerRadius: 50)
+                                    .fill(bt.powerDif().1))
             }
     
     

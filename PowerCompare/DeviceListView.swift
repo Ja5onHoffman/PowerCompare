@@ -29,6 +29,7 @@ struct DeviceListView: View {
                 }
                 bt.connectTo(i)
                 bt.addPeripheral(i)
+                self.isPresented = false 
             }
         }
     }
@@ -81,6 +82,7 @@ struct DeviceRow: View {
             Spacer()
             Button(action: {
                 connectToPeripheralWithName(device.name)
+                
             }, label: {
                 Text("Connect")
                     .fontWeight(.heavy)

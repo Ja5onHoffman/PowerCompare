@@ -16,7 +16,7 @@ open class Bluetooth: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, 
     
     @Published var names = [String]()
     @Published var peripherals = [CBPeripheral]()
-    @Published var deviceList = [Device]()
+    @Published var deviceList = Set<Device>()
     
 //    @Published var deviceList = [Device(name: "Wahoo Kickr"), Device(name: "Favero Assioma")]
     
@@ -37,6 +37,8 @@ open class Bluetooth: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, 
     @Published var p2Values = PowerArray(size: 100)
     
     @Published var hrValues = [Int]()
+    @Published var hrInstant = 0
+    
     
     @Published var p1Power = PowerData(value: 0)
     @Published var p2Power = PowerData(value: 0)
@@ -77,8 +79,17 @@ open class Bluetooth: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, 
     func loadDevices() {
         for i in peripherals {
             if let name = i.name {
-                    deviceList.append(Device(name: name))
+                deviceList.insert(Device(name: name))
             }
+        }
+    }
+    
+    func powerDif() -> (Double, Color) {
+        let d = p1Power.value - p2Power.value
+        if d > 0 {
+            return (d, .green)
+        } else {
+            return (d, .red)
         }
     }
     
@@ -189,6 +200,7 @@ open class Bluetooth: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, 
                 p2Power = powerMeasurement(from: characteristic)
                 p2Values.addValue(p2Power)
             }
+        // For testing w HR
         case heartRateCharacteristicCBUUID:
             let char = [UInt8](characteristic.value!)
             hrValues.append(Int(char[1]))
