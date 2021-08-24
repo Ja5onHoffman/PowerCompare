@@ -1,0 +1,46 @@
+
+
+
+Update state
+central.state is .poweredOn
+Connected!
+<CBService: 0x2820d90c0, isPrimary = YES, UUID = 6A4E8022-667B-11E3-949A-0800200C9A66>
+<CBService: 0x2820d9180, isPrimary = YES, UUID = 6A4E2800-667B-11E3-949A-0800200C9A66>
+<CBService: 0x2820d91c0, isPrimary = YES, UUID = Heart Rate>
+<CBService: 0x2820d9200, isPrimary = YES, UUID = 1814>
+<CBCharacteristic: 0x28118a7c0, UUID = 6A4E4C80-667B-11E3-949A-0800200C9A66, properties = 0x4, value = (null), notifying = NO>
+<CBCharacteristic: 0x28118a220, UUID = 6A4ECD28-667B-11E3-949A-0800200C9A66, properties = 0x12, value = (null), notifying = NO>
+6A4ECD28-667B-11E3-949A-0800200C9A66: properties contains .read
+6A4ECD28-667B-11E3-949A-0800200C9A66: properties contains .notify
+<CBCharacteristic: 0x2811a06c0, UUID = 6A4E2803-667B-11E3-949A-0800200C9A66, properties = 0xE, value = (null), notifying = NO>
+6A4E2803-667B-11E3-949A-0800200C9A66: properties contains .read
+<CBCharacteristic: 0x2811a0660, UUID = 6A4E2810-667B-11E3-949A-0800200C9A66, properties = 0x1E, value = {length = 12, bytes = 0x8907c201040a020a03665400}, notifying = NO>
+6A4E2810-667B-11E3-949A-0800200C9A66: properties contains .read
+6A4E2810-667B-11E3-949A-0800200C9A66: properties contains .notify
+<CBCharacteristic: 0x2811a09c0, UUID = 6A4E2820-667B-11E3-949A-0800200C9A66, properties = 0xC, value = (null), notifying = NO>
+<CBCharacteristic: 0x2811a0a20, UUID = 6A4E2811-667B-11E3-949A-0800200C9A66, properties = 0x1E, value = {length = 14, bytes = 0x8b00020a01048d94130103719500}, notifying = NO>
+6A4E2811-667B-11E3-949A-0800200C9A66: properties contains .read
+6A4E2811-667B-11E3-949A-0800200C9A66: properties contains .notify
+<CBCharacteristic: 0x2811a0cc0, UUID = 6A4E2821-667B-11E3-949A-0800200C9A66, properties = 0xC, value = (null), notifying = NO>
+<CBCharacteristic: 0x2811a0de0, UUID = 6A4E2812-667B-11E3-949A-0800200C9A66, properties = 0x1E, value = {length = 2, bytes = 0x8400}, notifying = NO>
+6A4E2812-667B-11E3-949A-0800200C9A66: properties contains .read
+6A4E2812-667B-11E3-949A-0800200C9A66: properties contains .notify
+<CBCharacteristic: 0x2811a0e40, UUID = 6A4E2822-667B-11E3-949A-0800200C9A66, properties = 0xC, value = (null), notifying = NO>
+<CBCharacteristic: 0x2811bcb40, UUID = 2A37, properties = 0x10, value = (null), notifying = NO>
+2A37: properties contains .notify
+<CBCharacteristic: 0x2811a0fc0, UUID = 2A54, properties = 0x2, value = (null), notifying = NO>
+2A54: properties contains .read
+<CBCharacteristic: 0x2811a1020, UUID = 2A53, properties = 0x10, value = (null), notifying = NO>
+2A53: properties contains .notify
+Unhandled Characteristic UUID: 6A4ECD28-667B-11E3-949A-0800200C9A66
+Unhandled Characteristic UUID: 6A4E2803-667B-11E3-949A-0800200C9A66
+Unhandled Characteristic UUID: 6A4E2810-667B-11E3-949A-0800200C9A66
+Unhandled Characteristic UUID: 6A4E2811-667B-11E3-949A-0800200C9A66
+Unhandled Characteristic UUID: 6A4E2812-667B-11E3-949A-0800200C9A66
+Unhandled Characteristic UUID: 2A37
+Unhandled Characteristic UUID: 2A54
+Unhandled Characteristic UUID: 2A37
+Unhandled Characteristic UUID: 2A37
+Unhandled Characteristic UUID: 2A37
+Unhandled Characteristic UUID: 2A53
+Unhandled Characteristic UUID: 2A37

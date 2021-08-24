@@ -26,11 +26,17 @@ open class Bluetooth: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, 
     let wattUnitCBUUID = CBUUID(string: "0x2762")
     var deviceNumber = 0
     
+    // HR for testing
+    let heartRateCharacteristicCBUUID = CBUUID(string: "0x2A37")
+    let heartRateServcieSCBUUID = CBUUID(string: "0x180D")
+    
     var p1: CBPeripheral?
     var p2: CBPeripheral?
 
     @Published var p1Values = PowerArray(size: 100)
     @Published var p2Values = PowerArray(size: 100)
+    
+    @Published var hrValues = [Int]()
     
     @Published var p1Power = PowerData(value: 0)
     @Published var p2Power = PowerData(value: 0)
@@ -54,11 +60,13 @@ open class Bluetooth: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, 
     
     func scan() {
         if centralManager.state == .poweredOn && !centralManager.isScanning {
-                centralManager.scanForPeripherals(withServices: [powerMeterServiceCBUUID], options: nil)
+//                centralManager.scanForPeripherals(withServices: [powerMeterServiceCBUUID], options: nil)
+            centralManager.scanForPeripherals(withServices: [heartRateServcieSCBUUID], options: nil)
         } else {
             print("Bluetooth is off")
         }
     }
+
     
     func stopScan() {
         centralManager.stopScan()
@@ -181,6 +189,9 @@ open class Bluetooth: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, 
                 p2Power = powerMeasurement(from: characteristic)
                 p2Values.addValue(p2Power)
             }
+        case heartRateCharacteristicCBUUID:
+            let char = [UInt8](characteristic.value!)
+            hrValues.append(Int(char[1]))
         default:
             print("Unhandled Characteristic UUID: \(characteristic.uuid)")
         }

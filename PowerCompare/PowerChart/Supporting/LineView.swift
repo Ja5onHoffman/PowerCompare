@@ -41,15 +41,27 @@ struct LineView: View {
 //                            )
                     }
                 }
-    
                 
-                VStack {
-                    LineGraph(dataPoints: normalize(data1))
-//                    LineGraph(dataPoints: normalize(sampleData))
-                        .trim(to: on ? 1 : 0)
-                        .stroke(Color.red, lineWidth: 2)
-                        .border(Color.gray, width: 1)
+                ZStack {
+                    LineGraph(dataPoints: normalize(sampleData))
+                            .trim(to: on ? 1 : 0)
+                            .stroke(Color.red, lineWidth: 2)
+                            .border(Color.gray, width: 1)
+                    LineGraph(dataPoints: normalize(sampleData.reversed()))
+                            .trim(to: on ? 1 : 0)
+                            .stroke(Color.blue, lineWidth: 2)
+                            .border(Color.gray, width: 1)
                 }
+                
+    
+                // ZStack with two lines? 
+//                VStack {
+//                    LineGraph(dataPoints: normalize(data1))
+////                    LineGraph(dataPoints: normalize(sampleData))
+//                        .trim(to: on ? 1 : 0)
+//                        .stroke(Color.red, lineWidth: 2)
+//                        .border(Color.gray, width: 1)
+//                }
             }
         }
     }

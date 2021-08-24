@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		310B5EB426CED44700C984F3 /* LineGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310B5EB326CED44700C984F3 /* LineGraph.swift */; };
+		310B5EB626D4546700C984F3 /* hrdata.txt in Sources */ = {isa = PBXBuildFile; fileRef = 310B5EB526D4546700C984F3 /* hrdata.txt */; };
 		31D210FD26B19A3F001C3AC8 /* PowerCompareApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D210FC26B19A3F001C3AC8 /* PowerCompareApp.swift */; };
 		31D2110126B19A41001C3AC8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31D2110026B19A41001C3AC8 /* Assets.xcassets */; };
 		31D2110426B19A41001C3AC8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31D2110326B19A41001C3AC8 /* Preview Assets.xcassets */; };
@@ -21,6 +22,7 @@
 
 /* Begin PBXFileReference section */
 		310B5EB326CED44700C984F3 /* LineGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineGraph.swift; sourceTree = "<group>"; };
+		310B5EB526D4546700C984F3 /* hrdata.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = hrdata.txt; sourceTree = "<group>"; };
 		31D210F926B19A3F001C3AC8 /* PowerCompare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PowerCompare.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		31D210FC26B19A3F001C3AC8 /* PowerCompareApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerCompareApp.swift; sourceTree = "<group>"; };
 		31D2110026B19A41001C3AC8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -48,6 +50,7 @@
 		31D210F026B19A3F001C3AC8 = {
 			isa = PBXGroup;
 			children = (
+				310B5EB526D4546700C984F3 /* hrdata.txt */,
 				31D210FB26B19A3F001C3AC8 /* PowerCompare */,
 				31D210FA26B19A3F001C3AC8 /* Products */,
 			);
@@ -180,6 +183,7 @@
 				31D2111226B1E092001C3AC8 /* LineView.swift in Sources */,
 				31D2111626B1E7CC001C3AC8 /* PowerView.swift in Sources */,
 				31D2111C26B2FD59001C3AC8 /* DeviceListView.swift in Sources */,
+				310B5EB626D4546700C984F3 /* hrdata.txt in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
