@@ -10,26 +10,39 @@ import SwiftUI
 import Combine
 import class CoreBluetooth.CBPeripheral
 
+extension View {
+    func print(_ value: Any) -> Self {
+        Swift.print(value)
+        return self
+    }
+}
 
 struct DeviceListView: View {
     
 //    @State var selected: UUID?
     @Binding var isPresented: Bool
-//    @Environment(\.managedObjectContext) var moc
     @EnvironmentObject var bt: Bluetooth
     
+//    func connectToPeripheralWithName(_ name: String) {
+//        for i in bt.peripherals {
+//            if i.name == name {
+//                if bt.deviceNumber == 1 {
+//                    bt.p1Name = name
+//                } else if bt.deviceNumber == 2 {
+//                    bt.p2Name = name
+//                }
+//                bt.connectTo(i)
+//                bt.addPeripheral(i)
+////                self.isPresented = false
+//            }
+//        }
+//    }
     
-    func connectToPeripheralWithName(_ name: String) {
+    func connectToPeripheralWithName(_ device: Device) {
         for i in bt.peripherals {
-            if i.name == name {
-                if bt.deviceNumber == 1 {
-                    bt.p1Name = name
-                } else if bt.deviceNumber == 2 {
-                    bt.p2Name = name
-                }
+            if i.name == device.name {
                 bt.connectTo(i)
                 bt.addPeripheral(i)
-                self.isPresented = false 
             }
         }
     }
@@ -38,14 +51,14 @@ struct DeviceListView: View {
         NavigationView {
             List {
                 Section(header: Text("Device List")) {
-                    ForEach(self.bt.deviceList) { d in
+                    // Infinite loop here
+                    ForEach(Array(self.bt.deviceList)) { d in
                         DeviceRow(device: d, connectToPeripheralWithName: connectToPeripheralWithName(_:))
                     }
                 }
             }
             .navigationTitle(Text("Devices"))
             .toolbar {
-                // Each row will have a disconnect button instead
                 Button(action: {
                     self.isPresented = false
                 }, label: {
@@ -57,39 +70,84 @@ struct DeviceListView: View {
             self.bt.scan()
         })
     }
-    
-
-    
 }
 
 struct ConnectionButton: ButtonStyle {
+    @State var device: Device
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .padding()
-            .background(Color.blue)
+            // I want the button to change based on the connection status of the device
+            .background($device.connected.wrappedValue ? Color.red : Color.blue)
             .clipShape(Capsule())
             .foregroundColor(.white)
     }
 }
 
 struct DeviceRow: View {
-    let device: Bluetooth.Device
-    let connectToPeripheralWithName: (_ name: String) -> Void
+    @State var device: Device
+    let connectToPeripheralWithName: (_ name: Device) -> Void
+    @EnvironmentObject var bt: Bluetooth
     
     var body: some View {
         HStack {
             Text(device.name)
             Spacer()
             Button(action: {
-                connectToPeripheralWithName(device.name)
-                
+                buttonAction
             }, label: {
-                Text("Connect")
-                    .fontWeight(.heavy)
-            }).buttonStyle(ConnectionButton())
+                buttonText
+            }).buttonStyle(ConnectionButton(device: device))
         }
 
     }
+    
+    // Not used
+    private var isConnected: Bool {
+        if $device.connected.wrappedValue {
+            return true
+        } else { return false }
+    }
+    
+    // Computed properties for the purpose of changing the button
+    private var buttonText: Text {
+        if $device.connected.wrappedValue {
+            return Text("Disconnect").fontWeight(.heavy)
+        } else {
+            return Text("Connect").fontWeight(.heavy)
+        }
+    }
+    
+    private var buttonAction: Void {
+        if $device.connected.wrappedValue {
+            return disconnect(device.name)
+        } else {
+            return connectToPeripheralWithName(device)
+        }
+    }
+    
+    func disconnect(_ name: String) {
+        print(name)
+        return
+    }
+    
+//    private var title: String {
+//        switch state {
+//        case .loggedIn(let user):
+//            return "Welcome back, \(user.name)!"
+//        case .loggedOut:
+//            return "Not logged in"
+//        }
+//    }
+//
+//    private var buttonText: String {
+//        switch state {
+//        case .loggedIn:
+//            return "Log out"
+//        case .loggedOut:
+//            return "Log in"
+//        }
+//    }
 }
 
 

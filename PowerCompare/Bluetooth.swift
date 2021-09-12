@@ -16,7 +16,8 @@ open class Bluetooth: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, 
     
     @Published var names = [String]()
     @Published var peripherals = [CBPeripheral]()
-    @Published var deviceList = Set<Device>()
+    var deviceList = Set<Device>()
+    var deviceNames = Set<Device>()
     
 //    @Published var deviceList = [Device(name: "Wahoo Kickr"), Device(name: "Favero Assioma")]
     
@@ -30,8 +31,8 @@ open class Bluetooth: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, 
     let heartRateCharacteristicCBUUID = CBUUID(string: "0x2A37")
     let heartRateServcieSCBUUID = CBUUID(string: "0x180D")
     
-    var p1: CBPeripheral?
-    var p2: CBPeripheral?
+    @Published var p1: CBPeripheral?
+    @Published var p2: CBPeripheral?
 
     @Published var p1Values = PowerArray(size: 100)
     @Published var p2Values = PowerArray(size: 100)
@@ -45,15 +46,12 @@ open class Bluetooth: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, 
     
     @Published var p1Name: String? = "Awaiting Connection"
     @Published var p2Name: String? = "Awaiting Connection"
+    
+    var deviceConnected = false
 
     public override init() {
         super.init()
         self.createCentralManager()
-    }
-    
-    struct Device: Identifiable, Hashable {
-        let id = UUID()
-        let name: String
     }
     
     func createCentralManager() {
@@ -71,9 +69,9 @@ open class Bluetooth: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, 
 
     
     func stopScan() {
-        centralManager.stopScan()
         deviceList.removeAll()
         peripherals.removeAll()
+        centralManager.stopScan()
     }
     
     func loadDevices() {
@@ -111,6 +109,7 @@ open class Bluetooth: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, 
     
     func connectTo(_ peripheral: CBPeripheral) {
         // Assioma has to be in L only mode vs Dual L/R
+        deviceNames.insert(Device(name: peripheral.name!, connected: true))
         centralManager.connect(peripheral, options: nil)
     }
     
@@ -122,6 +121,7 @@ open class Bluetooth: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, 
         for p in peripherals {
             centralManager.cancelPeripheralConnection(p)
         }
+        deviceConnected = false 
     }
     
     func setDeviceNumber(_ number: Int) {
@@ -157,6 +157,7 @@ open class Bluetooth: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, 
     
     public func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
         print("Connected!")
+        deviceConnected = true
         peripheral.discoverServices(nil)
     }
 
@@ -204,6 +205,7 @@ open class Bluetooth: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, 
         case heartRateCharacteristicCBUUID:
             let char = [UInt8](characteristic.value!)
             hrValues.append(Int(char[1]))
+            hrInstant = Int(char[1])
         default:
             print("Unhandled Characteristic UUID: \(characteristic.uuid)")
         }
@@ -230,5 +232,26 @@ open class Bluetooth: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, 
             print("\(p.description) disconnected")
         }
 
+    }
+}
+
+// Changed to class for Observable
+class Device: Identifiable, Hashable, ObservableObject {
+    
+    let id = UUID()
+    let name: String
+    @Published var connected: Bool
+    
+    init(name: String, connected: Bool = false) {
+        self.name = name
+        self.connected = connected
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+    
+    static func == (lhs: Device, rhs: Device) -> Bool {
+        return lhs.id == rhs.id && lhs.name == rhs.name
     }
 }

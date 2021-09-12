@@ -10,7 +10,7 @@ import SwiftUI
 
 // Maybe make this a connection modal 
 struct WelcomeModal: View {
-    
+    @EnvironmentObject var bt: Bluetooth
     @Binding var showingModal: Bool
     @State private var showingList = false
     
@@ -35,7 +35,7 @@ struct WelcomeModal: View {
                         .sheet(isPresented: $showingList, onDismiss: {
                             self.$showingModal.wrappedValue = false
                         }, content: {
-                            DeviceListView(isPresented: $showingList)
+                            DeviceListView(isPresented: $showingList).environmentObject(bt)
                         }).padding()
                     }
                     .frame(width: 300, height: 200)

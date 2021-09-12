@@ -46,14 +46,26 @@ struct PowerView: View {
                 } else {
                     HStack {
                         Spacer()
-                        Button("Connect Devices") {
-                            self.showList.toggle()
+                        if bt.deviceConnected {
+                            Button("Disconnect") {
+                                self.showList.toggle()
+                                bt.disconnectAll()
+                            }
+                            .sheet(isPresented: $showList, onDismiss: {
+                                self.$showList.wrappedValue = false
+                            }, content: {
+                                DeviceListView(isPresented: $showList)
+                            }).padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 10.0))
+                        } else {
+                            Button("Connect Devices") {
+                                self.showList.toggle()
+                            }
+                            .sheet(isPresented: $showList, onDismiss: {
+                                self.$showList.wrappedValue = false
+                            }, content: {
+                                DeviceListView(isPresented: $showList)
+                            }).padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 10.0))
                         }
-                        .sheet(isPresented: $showList, onDismiss: {
-                            self.$showList.wrappedValue = false
-                        }, content: {
-                            DeviceListView(isPresented: $showList)
-                        }).padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 10.0))
                     }
                 }
                 

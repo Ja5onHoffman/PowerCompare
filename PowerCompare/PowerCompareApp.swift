@@ -9,10 +9,12 @@ import SwiftUI
 
 @main
 struct PowerCompareApp: App {
+    @StateObject var bt = Bluetooth()
+    
     var body: some Scene {
         WindowGroup {
             PowerView()
-                .environmentObject(Bluetooth())
+                .environmentObject(bt)
         }
     }
 }
