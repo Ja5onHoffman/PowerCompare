@@ -50,7 +50,7 @@ struct DeviceListView: View {
     var body: some View {
         NavigationView {
             List {
-                Section(header: Text("Device List")) {
+                Section(header: Text("Connect Two Devices")) {
                     // Infinite loop here
                     ForEach(Array(self.bt.deviceList)) { d in
                         DeviceRow(device: d, connectToPeripheralWithName: connectToPeripheralWithName(_:))
@@ -62,8 +62,13 @@ struct DeviceListView: View {
                 Button(action: {
                     self.isPresented = false
                 }, label: {
-                    Text("Cancel")
-                        .fontWeight(.heavy)
+                    if bt.peripherals.count > 2 {
+                        Text("Done")
+                            .fontWeight(.heavy)
+                    } else {
+                        Text("Cancel")
+                            .fontWeight(.heavy)
+                    }
                 })
             }
         }.onAppear(perform: {
@@ -127,27 +132,12 @@ struct DeviceRow: View {
     }
     
     func disconnect(_ name: String) {
-        print(name)
-        return
+        for i in bt.peripherals {
+            if name == i.name {
+                bt.disconnect(i)
+            }
+        }
     }
-    
-//    private var title: String {
-//        switch state {
-//        case .loggedIn(let user):
-//            return "Welcome back, \(user.name)!"
-//        case .loggedOut:
-//            return "Not logged in"
-//        }
-//    }
-//
-//    private var buttonText: String {
-//        switch state {
-//        case .loggedIn:
-//            return "Log out"
-//        case .loggedOut:
-//            return "Log in"
-//        }
-//    }
 }
 
 

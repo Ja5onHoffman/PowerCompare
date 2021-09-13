@@ -16,8 +16,8 @@ open class Bluetooth: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, 
     
     @Published var names = [String]()
     @Published var peripherals = [CBPeripheral]()
-    var deviceList = Set<Device>()
-    var deviceNames = Set<Device>()
+    @Published var deviceList = Set<Device>()
+    @Published var deviceNames = Set<Device>()
     
 //    @Published var deviceList = [Device(name: "Wahoo Kickr"), Device(name: "Favero Assioma")]
     
@@ -69,18 +69,19 @@ open class Bluetooth: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, 
 
     
     func stopScan() {
-        deviceList.removeAll()
-        peripherals.removeAll()
+//        deviceList.removeAll()
+//        peripherals.removeAll()
         centralManager.stopScan()
     }
     
-    func loadDevices() {
-        for i in peripherals {
-            if let name = i.name {
-                deviceList.insert(Device(name: name))
-            }
-        }
-    }
+//    func loadDevices() {
+//        for i in peripherals {
+//            guard let name = i.name else { return }
+//            if peripherals.contains(i) {
+//                deviceList.insert(Device(name: name))
+//            }
+//        }
+//    }
     
     func powerDif() -> (Double, Color) {
         let d = p1Power.value - p2Power.value
@@ -108,8 +109,13 @@ open class Bluetooth: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, 
     }
     
     func connectTo(_ peripheral: CBPeripheral) {
-        // Assioma has to be in L only mode vs Dual L/R
-        deviceNames.insert(Device(name: peripheral.name!, connected: true))
+        // device is designated as "connected" here, but doesn't trigger a chance in appearance of the button.
+        for i in deviceList {
+            if i.name == peripheral.name {
+                i.connected = true
+            }
+        }
+//        deviceNames.insert(Device(name: peripheral.name!, connected: true))
         centralManager.connect(peripheral, options: nil)
     }
     
@@ -152,7 +158,9 @@ open class Bluetooth: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, 
     
     public func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
         peripherals.append(peripheral) // Device list uses this
-        loadDevices()
+        if let name = peripheral.name {
+            deviceList.insert(Device(name: name))
+        }
     }
     
     public func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
@@ -212,6 +220,7 @@ open class Bluetooth: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, 
         
     }
     
+    
     func powerMeasurement(from characteristic: CBCharacteristic) -> PowerData {
 
         guard let characteristicData = characteristic.value else { return PowerData(value: 0) }
@@ -228,8 +237,14 @@ open class Bluetooth: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, 
     
     public func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
         if let p = peripherals.firstIndex(of: peripheral) {
-            peripherals.remove(at: p)
-            print("\(p.description) disconnected")
+            // Don't necessarily want to remove
+//            peripherals.remove(at: p)
+            for i in deviceList {
+                if i.name == peripheral.name {
+                    i.connected = false
+//                    deviceList.remove(i)
+                }
+            }
         }
 
     }
