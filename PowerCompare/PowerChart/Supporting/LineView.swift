@@ -19,9 +19,25 @@ struct LineView: View {
         return d
     }
     
+    var data2: [CGFloat] {
+        var d = [CGFloat]()
+        for i in bt.p1Values.values {
+            d.append(CGFloat(i.value))
+        }
+        return d
+    }
+    
     var hrData: [CGFloat] {
         var d: [CGFloat] = [0.0]
-        for i in bt.hrValues {
+        for i in bt.hrValues1 {
+            d.append(CGFloat(i))
+        }
+        return d
+    }
+    
+    var hrData2: [CGFloat] {
+        var d: [CGFloat] = [0.0]
+        for i in bt.hrValues2 {
             d.append(CGFloat(i))
         }
         return d
@@ -63,11 +79,14 @@ struct LineView: View {
                 
     
                 // ZStack with two lines? 
-                VStack {
+                ZStack {
                     LineGraph(dataPoints: normalize(hrData))
-//                    LineGraph(dataPoints: normalize(sampleData))
                         .trim(to: on ? 1 : 0)
                         .stroke(Color.red, lineWidth: 2)
+                        .border(Color.gray, width: 1)
+                    LineGraph(dataPoints: normalize(hrData2))
+                        .trim(to: on ? 1 : 0)
+                        .stroke(Color.blue, lineWidth: 2)
                         .border(Color.gray, width: 1)
                 }
             }

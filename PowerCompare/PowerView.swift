@@ -77,7 +77,7 @@ struct PowerView: View {
                             .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 0))
                         Spacer()
                     }
-                    Text(String(describing: bt.hrInstant))
+                    Text(String(describing: bt.hrInstant1))
 //                    Text(String(describing: bt.p1Power))
                         .foregroundColor(.white)
                         .font(.largeTitle)
@@ -95,7 +95,7 @@ struct PowerView: View {
                             .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 0))
                         Spacer()
                     }
-                    Text(String(describing: bt.p2Power.value))
+                    Text(String(describing: bt.hrInstant2))
                         .foregroundColor(.white)
                         .font(.largeTitle)
                         .aspectRatio(contentMode: .fit)

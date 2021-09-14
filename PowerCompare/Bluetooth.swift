@@ -37,8 +37,11 @@ open class Bluetooth: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, 
     @Published var p1Values = PowerArray(size: 100)
     @Published var p2Values = PowerArray(size: 100)
     
-    @Published var hrValues = [Int]()
-    @Published var hrInstant = 0
+    @Published var hrValues1 = [Int]()
+    @Published var hrInstant1 = 0
+    
+    @Published var hrValues2 = [Int]()
+    @Published var hrInstant2 = 0
     
     @Published var p1Power = PowerData(value: 0)
     @Published var p2Power = PowerData(value: 0)
@@ -61,7 +64,7 @@ open class Bluetooth: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, 
     func scan() {
         if centralManager.state == .poweredOn && !centralManager.isScanning {
 //                centralManager.scanForPeripherals(withServices: [powerMeterServiceCBUUID], options: nil)
-            centralManager.scanForPeripherals(withServices: [heartRateServcieSCBUUID], options: nil)
+            centralManager.scanForPeripherals(withServices: [heartRateServcieSCBUUID, powerMeterServiceCBUUID], options: nil)
         } else {
             print("Bluetooth is off")
         }
@@ -75,6 +78,16 @@ open class Bluetooth: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, 
     
     func powerDif() -> (Double, Color) {
         let d = p1Power.value - p2Power.value
+        if d > 0 {
+            return (d, .green)
+        } else {
+            return (d, .red)
+        }
+    }
+    
+    // For test
+    func hrDif() -> (Int, Color) {
+        let d = hrInstant1 - hrInstant2
         if d > 0 {
             return (d, .green)
         } else {
@@ -211,11 +224,19 @@ open class Bluetooth: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, 
                 p2Power = powerMeasurement(from: characteristic)
                 p2Values.addValue(p2Power)
             }
+            
         // For testing w HR
         case heartRateCharacteristicCBUUID:
-            let char = [UInt8](characteristic.value!)
-            hrValues.append(Int(char[1]))
-            hrInstant = Int(char[1])
+            if peripheral.name == p1Name {
+                let char = [UInt8](characteristic.value!)
+                hrValues1.append(Int(char[1]))
+                hrInstant1 = Int(char[1])
+            } else if peripheral.name == p2Name {
+                let char = [UInt8](characteristic.value!)
+                hrValues2.append(Int(char[1]))
+                hrInstant2 = Int(char[1])
+            }
+
         default:
             print("Unhandled Characteristic UUID: \(characteristic.uuid)")
         }
