@@ -23,22 +23,6 @@ struct DeviceListView: View {
     @Binding var isPresented: Bool
     @EnvironmentObject var bt: Bluetooth
     
-//    func connectToPeripheralWithName(_ name: String) {
-//        for i in bt.peripherals {
-//            if i.name == name {
-//                if bt.deviceNumber == 1 {
-//                    bt.p1Name = name
-//                } else if bt.deviceNumber == 2 {
-//                    bt.p2Name = name
-//                }
-//                bt.connectTo(i)
-//                bt.addPeripheral(i)
-////                self.isPresented = false
-//            }
-//        }
-//    }
-    
-    // This ends up connecting both
     func connectToPeripheralWithName(_ device: Device) {
         for i in bt.peripherals {
             if i.name == device.name {
@@ -53,7 +37,6 @@ struct DeviceListView: View {
         NavigationView {
             List {
                 Section(header: Text("Connect Two Devices")) {
-                    // Infinite loop here
                     ForEach(Array(self.bt.deviceList)) { d in
                         DeviceRow(device: d, connectToPeripheralWithName: connectToPeripheralWithName(_:))
                     }

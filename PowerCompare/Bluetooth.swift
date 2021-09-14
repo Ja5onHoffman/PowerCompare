@@ -67,21 +67,11 @@ open class Bluetooth: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, 
         }
     }
 
-    
     func stopScan() {
 //        deviceList.removeAll()
 //        peripherals.removeAll()
         centralManager.stopScan()
     }
-    
-//    func loadDevices() {
-//        for i in peripherals {
-//            guard let name = i.name else { return }
-//            if peripherals.contains(i) {
-//                deviceList.insert(Device(name: name))
-//            }
-//        }
-//    }
     
     func powerDif() -> (Double, Color) {
         let d = p1Power.value - p2Power.value
@@ -100,25 +90,6 @@ open class Bluetooth: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, 
         }
     }
     
-    // Delegate not being added
-    // Get rid of this function
-//    func addPeripheral(_ peripheral: CBPeripheral) {
-//        print("!!!!!!!!! addPeripheral")
-//        if let p = peripherals[0] as CBPeripheral? {
-//            print("!!!!!!!!! p1 added")
-//            p1 = p
-//            p1Name = p.name!
-//            p1!.delegate = self
-//        } else if peripherals.count > 1 {
-//            print("!!!!!!!!!!! p2 added")
-//            if let p = peripherals[1] as CBPeripheral? {
-//                p2 = p
-//                p2Name = p.name!
-//                p2!.delegate = self
-//            }
-//        }
-//    }
-    
     func connectTo(_ peripheral: CBPeripheral) {
         for i in deviceList {
             if i.name == peripheral.name {
@@ -130,11 +101,9 @@ open class Bluetooth: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, 
         if p1 == nil {
             p1 = peripheral
             p1Name = peripheral.name
-            print("P1")
         } else {
             p2 = peripheral
             p2Name = peripheral.name
-            print("P2")
         }
     }
     
