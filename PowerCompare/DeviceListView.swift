@@ -38,14 +38,16 @@ struct DeviceListView: View {
 //        }
 //    }
     
+    // This ends up connecting both
     func connectToPeripheralWithName(_ device: Device) {
         for i in bt.peripherals {
             if i.name == device.name {
                 bt.connectTo(i)
-                bt.addPeripheral(i)
+//                bt.addPeripheral(i)
             }
         }
     }
+    
     
     var body: some View {
         NavigationView {
@@ -62,18 +64,20 @@ struct DeviceListView: View {
                 Button(action: {
                     self.isPresented = false
                 }, label: {
-                    if bt.peripherals.count > 2 {
-                        Text("Done")
-                            .fontWeight(.heavy)
-                    } else {
-                        Text("Cancel")
-                            .fontWeight(.heavy)
-                    }
+                    listButtonText
                 })
             }
         }.onAppear(perform: {
             self.bt.scan()
         })
+    }
+    
+    private var listButtonText: Text {
+        if bt.twoConnected() {
+            return Text("Done").fontWeight(.bold)
+        } else {
+            return Text("Cancel")
+        }
     }
 }
 
@@ -105,13 +109,6 @@ struct DeviceRow: View {
             }).buttonStyle(ConnectionButton(device: device))
         }
 
-    }
-    
-    // Not used
-    private var isConnected: Bool {
-        if $device.connected.wrappedValue {
-            return true
-        } else { return false }
     }
     
     // Computed properties for the purpose of changing the button

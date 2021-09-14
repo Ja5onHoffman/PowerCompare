@@ -31,8 +31,8 @@ open class Bluetooth: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, 
     let heartRateCharacteristicCBUUID = CBUUID(string: "0x2A37")
     let heartRateServcieSCBUUID = CBUUID(string: "0x180D")
     
-    @Published var p1: CBPeripheral?
-    @Published var p2: CBPeripheral?
+    @Published var p1: CBPeripheral? = nil
+    @Published var p2: CBPeripheral? = nil 
 
     @Published var p1Values = PowerArray(size: 100)
     @Published var p2Values = PowerArray(size: 100)
@@ -40,13 +40,13 @@ open class Bluetooth: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, 
     @Published var hrValues = [Int]()
     @Published var hrInstant = 0
     
-    
     @Published var p1Power = PowerData(value: 0)
     @Published var p2Power = PowerData(value: 0)
     
     @Published var p1Name: String? = "Awaiting Connection"
     @Published var p2Name: String? = "Awaiting Connection"
     
+    var devicesConnected = 0
     var deviceConnected = false
 
     public override init() {
@@ -92,31 +92,50 @@ open class Bluetooth: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, 
         }
     }
     
-    func addPeripheral(_ peripheral: CBPeripheral) {
-        if let p = peripherals[0] as CBPeripheral? {
-            p1 = p
-            p1Name = p.name!
-            p1!.delegate = self
-        }
-        
-        if peripherals.count > 1 {
-            if let p = peripherals[1] as CBPeripheral? {
-                p2 = p
-                p2Name = p.name!
-                p2!.delegate = self
-            }
+    func twoConnected() -> Bool {
+        if p1?.state == .connected && p2?.state == .connected {
+            return true
+        } else {
+            return false
         }
     }
     
+    // Delegate not being added
+    // Get rid of this function
+//    func addPeripheral(_ peripheral: CBPeripheral) {
+//        print("!!!!!!!!! addPeripheral")
+//        if let p = peripherals[0] as CBPeripheral? {
+//            print("!!!!!!!!! p1 added")
+//            p1 = p
+//            p1Name = p.name!
+//            p1!.delegate = self
+//        } else if peripherals.count > 1 {
+//            print("!!!!!!!!!!! p2 added")
+//            if let p = peripherals[1] as CBPeripheral? {
+//                p2 = p
+//                p2Name = p.name!
+//                p2!.delegate = self
+//            }
+//        }
+//    }
+    
     func connectTo(_ peripheral: CBPeripheral) {
-        // device is designated as "connected" here, but doesn't trigger a chance in appearance of the button.
         for i in deviceList {
             if i.name == peripheral.name {
                 i.connected = true
             }
         }
-//        deviceNames.insert(Device(name: peripheral.name!, connected: true))
+        peripheral.delegate = self
         centralManager.connect(peripheral, options: nil)
+        if p1 == nil {
+            p1 = peripheral
+            p1Name = peripheral.name
+            print("P1")
+        } else {
+            p2 = peripheral
+            p2Name = peripheral.name
+            print("P2")
+        }
     }
     
     func disconnect(_ peripheral: CBPeripheral) {
@@ -127,7 +146,7 @@ open class Bluetooth: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, 
         for p in peripherals {
             centralManager.cancelPeripheralConnection(p)
         }
-        deviceConnected = false 
+        deviceConnected = false
     }
     
     func setDeviceNumber(_ number: Int) {
@@ -171,6 +190,20 @@ open class Bluetooth: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, 
 
     
 //MARK: CBPeripheralDelegate
+    
+    public func centralManager(_ central: CBCentralManager, connectionEventDidOccur event: CBConnectionEvent, for peripheral: CBPeripheral) {
+        if p1 == nil {
+            p1 = peripheral
+            p1Name = peripheral.name
+            p1!.delegate = self
+            print("P1")
+        } else {
+            p2 = peripheral
+            p2Name = peripheral.name
+            p2!.delegate = self
+            print("P2")
+        }
+    }
     
     public func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
       guard let services = peripheral.services else { return }
@@ -248,6 +281,7 @@ open class Bluetooth: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, 
         }
 
     }
+
 }
 
 // Changed to class for Observable

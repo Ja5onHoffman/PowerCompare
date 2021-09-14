@@ -68,7 +68,7 @@ struct PowerView: View {
                         }
                     }
                 }
-                
+            
             VStack {
                 VStack {
                     HStack {
@@ -121,8 +121,6 @@ struct PowerView: View {
                                     .fill(bt.powerDif().1))
             }
     
-    
-
             }.fullScreenCover(isPresented: $showModal, content: {
                 WelcomeModal(showingModal: $showModal)
             })
