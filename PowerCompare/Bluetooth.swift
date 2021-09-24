@@ -249,18 +249,6 @@ open class Bluetooth: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, 
 
         guard let characteristicData = characteristic.value else { return PowerData(value: 0) }
         let byteArray = [UInt8](characteristicData)
-        print(byteArray)
-//        let byteArray2 = UnsafePointer<UInt16>(characteristicData.withUnsafeBytes({
-//            (Int16($0) << 8) | Int16($1)
-//        })
-//        let byteArray = characteristicData.withUnsafeBytes {
-//            Array(UnsafeBufferPointer<UInt16>(start: $0, count: characteristicData.count/MemoryLayout<UInt16>.stride))
-//                                                           }
-//        let byteArray = characteristicData.withUnsafeBytes(Array(UnsafeBufferPointer(start: characteristicData.first, count: characteristicData.count/MemoryLayout<UInt16>.stride)))
-//        var byteBuffer = [UInt16]()
-//        characteristicData.withUnsafeBytes { b in
-//            byteBuffer.append(UnsafeMutableBufferPointer(b))
-//        }
         // Power comes through in two bytes
         // Above 256 combine to get power
         let msb = byteArray[3]

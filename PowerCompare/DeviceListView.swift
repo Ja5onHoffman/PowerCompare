@@ -19,7 +19,6 @@ extension View {
 
 struct DeviceListView: View {
     
-//    @State var selected: UUID?
     @Binding var isPresented: Bool
     @EnvironmentObject var bt: Bluetooth
     
@@ -69,7 +68,6 @@ struct ConnectionButton: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .padding()
-            // I want the button to change based on the connection status of the device
             .background($device.connected.wrappedValue ? Color.red : Color.blue)
             .clipShape(Capsule())
             .foregroundColor(.white)

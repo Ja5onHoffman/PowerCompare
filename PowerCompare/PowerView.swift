@@ -17,7 +17,6 @@ struct PowerView: View {
     let sampleData: [Double] = [500.0, 200.0, 200.0, 600.0, 800.0, 100.0, 200.0, 300.0, 200.0]
     
     @EnvironmentObject var bt: Bluetooth
-//    @State var data: PowerData
     @State var showModal = true
     @State var showList = false
     var deviceOne = ""

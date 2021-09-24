@@ -18,8 +18,6 @@ struct WelcomeModal: View {
         ZStack {
             if $showingModal.wrappedValue {
                 ZStack {
-//                    Color.black.opacity(0.4)
-//                        .edgesIgnoringSafeArea(.vertical)
                     BackgroundBlurView().edgesIgnoringSafeArea(.vertical)
                     VStack(spacing: 10) {
                         Text("Connect to a Device")
