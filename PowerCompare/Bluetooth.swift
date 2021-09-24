@@ -79,9 +79,9 @@ open class Bluetooth: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, 
     func powerDif() -> (Double, Color) {
         let d = p1Power.value - p2Power.value
         if d > 0 {
-            return (d, .green)
+            return (d, .blue)
         } else {
-            return (d, .red)
+            return (d, .green)
         }
     }
     
@@ -89,9 +89,9 @@ open class Bluetooth: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, 
     func hrDif() -> (Int, Color) {
         let d = hrInstant1 - hrInstant2
         if d > 0 {
-            return (d, .green)
+            return (d, .blue)
         } else {
-            return (d, .red)
+            return (d, .green)
         }
     }
     
@@ -243,17 +243,29 @@ open class Bluetooth: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, 
         
     }
     
-    
+//  Good power explanation
+//  https://stackoverflow.com/questions/54427537/understanding-ble-characteristic-values-for-cycle-power-measurement-0x2a63
     func powerMeasurement(from characteristic: CBCharacteristic) -> PowerData {
 
         guard let characteristicData = characteristic.value else { return PowerData(value: 0) }
         let byteArray = [UInt8](characteristicData)
-        
+        print(byteArray)
+//        let byteArray2 = UnsafePointer<UInt16>(characteristicData.withUnsafeBytes({
+//            (Int16($0) << 8) | Int16($1)
+//        })
+//        let byteArray = characteristicData.withUnsafeBytes {
+//            Array(UnsafeBufferPointer<UInt16>(start: $0, count: characteristicData.count/MemoryLayout<UInt16>.stride))
+//                                                           }
+//        let byteArray = characteristicData.withUnsafeBytes(Array(UnsafeBufferPointer(start: characteristicData.first, count: characteristicData.count/MemoryLayout<UInt16>.stride)))
+//        var byteBuffer = [UInt16]()
+//        characteristicData.withUnsafeBytes { b in
+//            byteBuffer.append(UnsafeMutableBufferPointer(b))
+//        }
         // Power comes through in two bytes
         // Above 256 combine to get power
         let msb = byteArray[3]
         let lsb = byteArray[2]
-        let pRaw = (Int16(msb) << 8 ) | Int16(lsb)
+        let pRaw = (Int16(msb) << 8) | Int16(lsb)
         let p = PowerData(value: Double(pRaw))
         return p
     }
