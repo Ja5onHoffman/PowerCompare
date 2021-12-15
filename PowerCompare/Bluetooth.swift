@@ -248,17 +248,20 @@ open class Bluetooth: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, 
     func powerMeasurement(from characteristic: CBCharacteristic) -> PowerData {
 
         guard let characteristicData = characteristic.value else { return PowerData(value: 0) }
+//        print("characteristicData \(characteristicData)")
         let byteArray = [UInt8](characteristicData)
         // Power comes through in two bytes
         // Above 256 combine to get power
         let msb = byteArray[3]
         let lsb = byteArray[2]
         let pRaw = (Int16(msb) << 8) | Int16(lsb)
+//        print("pRaw \(pRaw)")
         let p = PowerData(value: Double(pRaw))
         return p
     }
     
     public func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
+        // MARK: Save peripherals as dictionary and match with peripherals[periipheral.name]
         if let p = peripherals.firstIndex(of: peripheral) {
             // Don't necessarily want to remove
 //            peripherals.remove(at: p)

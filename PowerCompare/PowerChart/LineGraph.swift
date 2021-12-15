@@ -7,6 +7,12 @@
 
 import SwiftUI
 
+enum Smoothing {
+    case three
+    case ten
+    case average
+}
+
 struct LineGraph: Shape {
     var dataPoints: [CGFloat]
     

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		310B5EB426CED44700C984F3 /* LineGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310B5EB326CED44700C984F3 /* LineGraph.swift */; };
 		310B5EB626D4546700C984F3 /* hrdata.txt in Sources */ = {isa = PBXBuildFile; fileRef = 310B5EB526D4546700C984F3 /* hrdata.txt */; };
+		31941D46276A90C800E95A11 /* ChartsPowerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31941D45276A90C800E95A11 /* ChartsPowerData.swift */; };
 		31D210FD26B19A3F001C3AC8 /* PowerCompareApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D210FC26B19A3F001C3AC8 /* PowerCompareApp.swift */; };
 		31D2110126B19A41001C3AC8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31D2110026B19A41001C3AC8 /* Assets.xcassets */; };
 		31D2110426B19A41001C3AC8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31D2110326B19A41001C3AC8 /* Preview Assets.xcassets */; };
@@ -18,11 +19,13 @@
 		31D2111A26B20DCE001C3AC8 /* PowerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D2111926B20DCE001C3AC8 /* PowerData.swift */; };
 		31D2111C26B2FD59001C3AC8 /* DeviceListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D2111B26B2FD59001C3AC8 /* DeviceListView.swift */; };
 		31D2111E26B2FE79001C3AC8 /* WelcomeModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D2111D26B2FE79001C3AC8 /* WelcomeModal.swift */; };
+		BBDC5DED994E9C6D39CAFB63 /* Pods_PowerCompare.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5312DB7A4564688DBFCBBE2F /* Pods_PowerCompare.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		310B5EB326CED44700C984F3 /* LineGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineGraph.swift; sourceTree = "<group>"; };
 		310B5EB526D4546700C984F3 /* hrdata.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = hrdata.txt; sourceTree = "<group>"; };
+		31941D45276A90C800E95A11 /* ChartsPowerData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsPowerData.swift; sourceTree = "<group>"; };
 		31D210F926B19A3F001C3AC8 /* PowerCompare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PowerCompare.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		31D210FC26B19A3F001C3AC8 /* PowerCompareApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerCompareApp.swift; sourceTree = "<group>"; };
 		31D2110026B19A41001C3AC8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -34,6 +37,9 @@
 		31D2111926B20DCE001C3AC8 /* PowerData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerData.swift; sourceTree = "<group>"; };
 		31D2111B26B2FD59001C3AC8 /* DeviceListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceListView.swift; sourceTree = "<group>"; };
 		31D2111D26B2FE79001C3AC8 /* WelcomeModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeModal.swift; sourceTree = "<group>"; };
+		5312DB7A4564688DBFCBBE2F /* Pods_PowerCompare.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PowerCompare.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A54E782F66AAEF19CCD1ECE /* Pods-PowerCompare.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PowerCompare.release.xcconfig"; path = "Target Support Files/Pods-PowerCompare/Pods-PowerCompare.release.xcconfig"; sourceTree = "<group>"; };
+		DD25C3ACE2EC6B39F192B732 /* Pods-PowerCompare.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PowerCompare.debug.xcconfig"; path = "Target Support Files/Pods-PowerCompare/Pods-PowerCompare.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,18 +47,31 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BBDC5DED994E9C6D39CAFB63 /* Pods_PowerCompare.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0AECF8921D44F277946AF692 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DD25C3ACE2EC6B39F192B732 /* Pods-PowerCompare.debug.xcconfig */,
+				7A54E782F66AAEF19CCD1ECE /* Pods-PowerCompare.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		31D210F026B19A3F001C3AC8 = {
 			isa = PBXGroup;
 			children = (
 				310B5EB526D4546700C984F3 /* hrdata.txt */,
 				31D210FB26B19A3F001C3AC8 /* PowerCompare */,
 				31D210FA26B19A3F001C3AC8 /* Products */,
+				0AECF8921D44F277946AF692 /* Pods */,
+				89520EABBB6E80B70D410CE0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -77,6 +96,7 @@
 				31D2111B26B2FD59001C3AC8 /* DeviceListView.swift */,
 				31D2111726B20D8C001C3AC8 /* Bluetooth.swift */,
 				31D2111926B20DCE001C3AC8 /* PowerData.swift */,
+				31941D45276A90C800E95A11 /* ChartsPowerData.swift */,
 			);
 			path = PowerCompare;
 			sourceTree = "<group>";
@@ -106,6 +126,14 @@
 			path = Supporting;
 			sourceTree = "<group>";
 		};
+		89520EABBB6E80B70D410CE0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5312DB7A4564688DBFCBBE2F /* Pods_PowerCompare.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -113,9 +141,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 31D2110826B19A41001C3AC8 /* Build configuration list for PBXNativeTarget "PowerCompare" */;
 			buildPhases = (
+				8E8F906C2857EA8846A6D749 /* [CP] Check Pods Manifest.lock */,
 				31D210F526B19A3F001C3AC8 /* Sources */,
 				31D210F626B19A3F001C3AC8 /* Frameworks */,
 				31D210F726B19A3F001C3AC8 /* Resources */,
+				A07BB6D3BD61E3EFC1A836D8 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -170,6 +200,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		8E8F906C2857EA8846A6D749 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PowerCompare-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A07BB6D3BD61E3EFC1A836D8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PowerCompare/Pods-PowerCompare-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PowerCompare/Pods-PowerCompare-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PowerCompare/Pods-PowerCompare-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		31D210F526B19A3F001C3AC8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -177,6 +249,7 @@
 			files = (
 				31D2111826B20D8C001C3AC8 /* Bluetooth.swift in Sources */,
 				31D2111A26B20DCE001C3AC8 /* PowerData.swift in Sources */,
+				31941D46276A90C800E95A11 /* ChartsPowerData.swift in Sources */,
 				31D210FD26B19A3F001C3AC8 /* PowerCompareApp.swift in Sources */,
 				310B5EB426CED44700C984F3 /* LineGraph.swift in Sources */,
 				31D2111E26B2FE79001C3AC8 /* WelcomeModal.swift in Sources */,
@@ -308,10 +381,12 @@
 		};
 		31D2110926B19A41001C3AC8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DD25C3ACE2EC6B39F192B732 /* Pods-PowerCompare.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_ASSET_PATHS = "\"PowerCompare/Preview Content\"";
 				DEVELOPMENT_TEAM = XU5AWAYW87;
 				ENABLE_PREVIEWS = YES;
@@ -321,19 +396,22 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = JHM.PowerCompare;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		31D2110A26B19A41001C3AC8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7A54E782F66AAEF19CCD1ECE /* Pods-PowerCompare.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_ASSET_PATHS = "\"PowerCompare/Preview Content\"";
 				DEVELOPMENT_TEAM = XU5AWAYW87;
 				ENABLE_PREVIEWS = YES;
@@ -343,10 +421,11 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = JHM.PowerCompare;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
