@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct LineView: View {
+    
     @State var on = true
     @EnvironmentObject var bt: Bluetooth
     

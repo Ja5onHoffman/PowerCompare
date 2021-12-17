@@ -101,8 +101,12 @@ struct PowerView: View {
                         .frame(maxWidth: .infinity, minHeight: 60)
                         .background(RoundedRectangle(cornerRadius: 50)
                                         .fill(Color.green))
-                    LineView()
-                        .aspectRatio(1.5, contentMode: .fit)
+                    ChartsPowerView(
+                        powerData1: ChartsPowerData.powerData(ChartsPowerData.powerSample),
+                        powerData2: ChartsPowerData.powerData(ChartsPowerData.powerSample2)
+                    ).aspectRatio(1.5, contentMode: .fill)
+//                    LineView()
+//                        .aspectRatio(1.5, contentMode: .fit)
                 }.padding(EdgeInsets(top: 10, leading: 0, bottom: 0, trailing: 0))
                 
                 HStack {

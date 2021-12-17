@@ -3,13 +3,14 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		310B5EB426CED44700C984F3 /* LineGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310B5EB326CED44700C984F3 /* LineGraph.swift */; };
 		310B5EB626D4546700C984F3 /* hrdata.txt in Sources */ = {isa = PBXBuildFile; fileRef = 310B5EB526D4546700C984F3 /* hrdata.txt */; };
 		31941D46276A90C800E95A11 /* ChartsPowerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31941D45276A90C800E95A11 /* ChartsPowerData.swift */; };
+		31941D49276AB77B00E95A11 /* ChartsPowerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31941D48276AB77B00E95A11 /* ChartsPowerView.swift */; };
 		31D210FD26B19A3F001C3AC8 /* PowerCompareApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D210FC26B19A3F001C3AC8 /* PowerCompareApp.swift */; };
 		31D2110126B19A41001C3AC8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31D2110026B19A41001C3AC8 /* Assets.xcassets */; };
 		31D2110426B19A41001C3AC8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31D2110326B19A41001C3AC8 /* Preview Assets.xcassets */; };
@@ -26,6 +27,7 @@
 		310B5EB326CED44700C984F3 /* LineGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineGraph.swift; sourceTree = "<group>"; };
 		310B5EB526D4546700C984F3 /* hrdata.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = hrdata.txt; sourceTree = "<group>"; };
 		31941D45276A90C800E95A11 /* ChartsPowerData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsPowerData.swift; sourceTree = "<group>"; };
+		31941D48276AB77B00E95A11 /* ChartsPowerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsPowerView.swift; sourceTree = "<group>"; };
 		31D210F926B19A3F001C3AC8 /* PowerCompare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PowerCompare.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		31D210FC26B19A3F001C3AC8 /* PowerCompareApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerCompareApp.swift; sourceTree = "<group>"; };
 		31D2110026B19A41001C3AC8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -60,8 +62,15 @@
 				DD25C3ACE2EC6B39F192B732 /* Pods-PowerCompare.debug.xcconfig */,
 				7A54E782F66AAEF19CCD1ECE /* Pods-PowerCompare.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		31941D47276AB6F300E95A11 /* ChartsGraph */ = {
+			isa = PBXGroup;
+			children = (
+				31941D48276AB77B00E95A11 /* ChartsPowerView.swift */,
+			);
+			path = ChartsGraph;
 			sourceTree = "<group>";
 		};
 		31D210F026B19A3F001C3AC8 = {
@@ -88,6 +97,7 @@
 			children = (
 				31D2110226B19A41001C3AC8 /* Preview Content */,
 				31D2111D26B2FE79001C3AC8 /* WelcomeModal.swift */,
+				31941D47276AB6F300E95A11 /* ChartsGraph */,
 				31D2110B26B19C42001C3AC8 /* PowerChart */,
 				31D210FC26B19A3F001C3AC8 /* PowerCompareApp.swift */,
 				31D2110026B19A41001C3AC8 /* Assets.xcassets */,
@@ -257,6 +267,7 @@
 				31D2111626B1E7CC001C3AC8 /* PowerView.swift in Sources */,
 				31D2111C26B2FD59001C3AC8 /* DeviceListView.swift in Sources */,
 				310B5EB626D4546700C984F3 /* hrdata.txt in Sources */,
+				31941D49276AB77B00E95A11 /* ChartsPowerView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

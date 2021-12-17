@@ -8,9 +8,10 @@
 import Foundation
 import Charts
 
-struct ChartsPowerData: Identifiable, Hashable {
+struct ChartsPower: Identifiable, Hashable {
     let id = UUID()
     var watts: Double
+    
     
     // Use time instead of index?
 //    var time: String {
@@ -21,16 +22,66 @@ struct ChartsPowerData: Identifiable, Hashable {
 //        return formatter.string(from: d)
 //    }
     
-    static func powerDataOne(_ powerArray: [ChartsPowerData]) -> [ChartDataEntry] {
+
+    
+}
+
+struct ChartsPowerData {
+    
+    // Or use init
+    static var powerData1 = [ChartsPower]()
+    static var powerData2 = [ChartsPower]()
+    
+    static func powerData(_ powerArray: [ChartsPower]) -> [ChartDataEntry] {
         return powerArray.enumerated().map { (index, element) in
             ChartDataEntry(x: Double(index), y: element.watts)
         }
     }
     
-    static func powerDataTwo(_ powerArray: [ChartsPowerData]) -> [ChartDataEntry] {
-        return powerArray.enumerated().map { (index, element) in
-            ChartDataEntry(x: Double(index), y: element.watts)
-        }
-    }
+    static var powerSample: [ChartsPower] = [
+        ChartsPower(watts: 200.0),
+        ChartsPower(watts: 205.0),
+        ChartsPower(watts: 210.0),
+        ChartsPower(watts: 210.0),
+        ChartsPower(watts: 215.0),
+        ChartsPower(watts: 220.0),
+        ChartsPower(watts: 225.0),
+        ChartsPower(watts: 220.0),
+        ChartsPower(watts: 220.0),
+        ChartsPower(watts: 215.0),
+        ChartsPower(watts: 210.0),
+        ChartsPower(watts: 210.0),
+        ChartsPower(watts: 205.0),
+        ChartsPower(watts: 200.0),
+        ChartsPower(watts: 190.0),
+        ChartsPower(watts: 180.0),
+        ChartsPower(watts: 180.0),
+        ChartsPower(watts: 190.0),
+        ChartsPower(watts: 195.0),
+        ChartsPower(watts: 190.0)
+    ]
+    
+    static var powerSample2: [ChartsPower] = [
+        ChartsPower(watts: 210.0),
+        ChartsPower(watts: 215.0),
+        ChartsPower(watts: 220.0),
+        ChartsPower(watts: 205.0),
+        ChartsPower(watts: 210.0),
+        ChartsPower(watts: 215.0),
+        ChartsPower(watts: 230.0),
+        ChartsPower(watts: 225.0),
+        ChartsPower(watts: 215.0),
+        ChartsPower(watts: 210.0),
+        ChartsPower(watts: 215.0),
+        ChartsPower(watts: 205.0),
+        ChartsPower(watts: 200.0),
+        ChartsPower(watts: 190.0),
+        ChartsPower(watts: 185.0),
+        ChartsPower(watts: 175.0),
+        ChartsPower(watts: 185.0),
+        ChartsPower(watts: 185.0),
+        ChartsPower(watts: 200.0),
+        ChartsPower(watts: 200.0)
+    ]
     
 }
