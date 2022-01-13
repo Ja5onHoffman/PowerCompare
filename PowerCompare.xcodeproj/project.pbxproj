@@ -9,8 +9,15 @@
 /* Begin PBXBuildFile section */
 		310B5EB426CED44700C984F3 /* LineGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310B5EB326CED44700C984F3 /* LineGraph.swift */; };
 		310B5EB626D4546700C984F3 /* hrdata.txt in Sources */ = {isa = PBXBuildFile; fileRef = 310B5EB526D4546700C984F3 /* hrdata.txt */; };
+		311E1623276C0E880097B1B5 /* ChartsPowerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311E1622276C0E880097B1B5 /* ChartsPowerView.swift */; };
+		3131E498277291FD00581A1E /* FrameSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3131E497277291FD00581A1E /* FrameSize.swift */; };
+		3131E49A2772938500581A1E /* DataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3131E4992772938500581A1E /* DataView.swift */; };
+		3131E49C277A8F5C00581A1E /* ConnectButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3131E49B277A8F5C00581A1E /* ConnectButton.swift */; };
 		31941D46276A90C800E95A11 /* ChartsPowerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31941D45276A90C800E95A11 /* ChartsPowerData.swift */; };
-		31941D49276AB77B00E95A11 /* ChartsPowerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31941D48276AB77B00E95A11 /* ChartsPowerView.swift */; };
+		31941D49276AB77B00E95A11 /* ChartsPowerGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31941D48276AB77B00E95A11 /* ChartsPowerGraph.swift */; };
+		31B654E8278F87EF00B5A3AD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B654E7278F87EF00B5A3AD /* ContentView.swift */; };
+		31B654EB278F895300B5A3AD /* Modifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B654EA278F895300B5A3AD /* Modifiers.swift */; };
+		31B654F0278F8E4400B5A3AD /* digital-7.regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 31B654EF278F8E4400B5A3AD /* digital-7.regular.ttf */; };
 		31D210FD26B19A3F001C3AC8 /* PowerCompareApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D210FC26B19A3F001C3AC8 /* PowerCompareApp.swift */; };
 		31D2110126B19A41001C3AC8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31D2110026B19A41001C3AC8 /* Assets.xcassets */; };
 		31D2110426B19A41001C3AC8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31D2110326B19A41001C3AC8 /* Preview Assets.xcassets */; };
@@ -26,8 +33,15 @@
 /* Begin PBXFileReference section */
 		310B5EB326CED44700C984F3 /* LineGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineGraph.swift; sourceTree = "<group>"; };
 		310B5EB526D4546700C984F3 /* hrdata.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = hrdata.txt; sourceTree = "<group>"; };
+		311E1622276C0E880097B1B5 /* ChartsPowerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsPowerView.swift; sourceTree = "<group>"; };
+		3131E497277291FD00581A1E /* FrameSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameSize.swift; sourceTree = "<group>"; };
+		3131E4992772938500581A1E /* DataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataView.swift; sourceTree = "<group>"; };
+		3131E49B277A8F5C00581A1E /* ConnectButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectButton.swift; sourceTree = "<group>"; };
 		31941D45276A90C800E95A11 /* ChartsPowerData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsPowerData.swift; sourceTree = "<group>"; };
-		31941D48276AB77B00E95A11 /* ChartsPowerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsPowerView.swift; sourceTree = "<group>"; };
+		31941D48276AB77B00E95A11 /* ChartsPowerGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsPowerGraph.swift; sourceTree = "<group>"; };
+		31B654E7278F87EF00B5A3AD /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		31B654EA278F895300B5A3AD /* Modifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modifiers.swift; sourceTree = "<group>"; };
+		31B654EF278F8E4400B5A3AD /* digital-7.regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "digital-7.regular.ttf"; sourceTree = "<group>"; };
 		31D210F926B19A3F001C3AC8 /* PowerCompare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PowerCompare.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		31D210FC26B19A3F001C3AC8 /* PowerCompareApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerCompareApp.swift; sourceTree = "<group>"; };
 		31D2110026B19A41001C3AC8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -68,15 +82,32 @@
 		31941D47276AB6F300E95A11 /* ChartsGraph */ = {
 			isa = PBXGroup;
 			children = (
-				31941D48276AB77B00E95A11 /* ChartsPowerView.swift */,
+				31941D48276AB77B00E95A11 /* ChartsPowerGraph.swift */,
 			);
 			path = ChartsGraph;
+			sourceTree = "<group>";
+		};
+		31B654E9278F893B00B5A3AD /* Modifiers */ = {
+			isa = PBXGroup;
+			children = (
+				31B654EA278F895300B5A3AD /* Modifiers.swift */,
+			);
+			path = Modifiers;
+			sourceTree = "<group>";
+		};
+		31B654EE278F8D5300B5A3AD /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				31B654EF278F8E4400B5A3AD /* digital-7.regular.ttf */,
+			);
+			path = fonts;
 			sourceTree = "<group>";
 		};
 		31D210F026B19A3F001C3AC8 = {
 			isa = PBXGroup;
 			children = (
 				310B5EB526D4546700C984F3 /* hrdata.txt */,
+				31D2110026B19A41001C3AC8 /* Assets.xcassets */,
 				31D210FB26B19A3F001C3AC8 /* PowerCompare */,
 				31D210FA26B19A3F001C3AC8 /* Products */,
 				0AECF8921D44F277946AF692 /* Pods */,
@@ -95,18 +126,24 @@
 		31D210FB26B19A3F001C3AC8 /* PowerCompare */ = {
 			isa = PBXGroup;
 			children = (
+				31B654EE278F8D5300B5A3AD /* fonts */,
 				31D2110226B19A41001C3AC8 /* Preview Content */,
 				31D2111D26B2FE79001C3AC8 /* WelcomeModal.swift */,
 				31941D47276AB6F300E95A11 /* ChartsGraph */,
+				31B654E9278F893B00B5A3AD /* Modifiers */,
 				31D2110B26B19C42001C3AC8 /* PowerChart */,
 				31D210FC26B19A3F001C3AC8 /* PowerCompareApp.swift */,
-				31D2110026B19A41001C3AC8 /* Assets.xcassets */,
-				31D2110526B19A41001C3AC8 /* Info.plist */,
 				31D2111526B1E7CC001C3AC8 /* PowerView.swift */,
+				311E1622276C0E880097B1B5 /* ChartsPowerView.swift */,
+				31B654E7278F87EF00B5A3AD /* ContentView.swift */,
 				31D2111B26B2FD59001C3AC8 /* DeviceListView.swift */,
 				31D2111726B20D8C001C3AC8 /* Bluetooth.swift */,
 				31D2111926B20DCE001C3AC8 /* PowerData.swift */,
 				31941D45276A90C800E95A11 /* ChartsPowerData.swift */,
+				3131E4992772938500581A1E /* DataView.swift */,
+				3131E497277291FD00581A1E /* FrameSize.swift */,
+				3131E49B277A8F5C00581A1E /* ConnectButton.swift */,
+				31D2110526B19A41001C3AC8 /* Info.plist */,
 			);
 			path = PowerCompare;
 			sourceTree = "<group>";
@@ -205,6 +242,7 @@
 			files = (
 				31D2110426B19A41001C3AC8 /* Preview Assets.xcassets in Resources */,
 				31D2110126B19A41001C3AC8 /* Assets.xcassets in Resources */,
+				31B654F0278F8E4400B5A3AD /* digital-7.regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -257,7 +295,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3131E49C277A8F5C00581A1E /* ConnectButton.swift in Sources */,
 				31D2111826B20D8C001C3AC8 /* Bluetooth.swift in Sources */,
+				31B654E8278F87EF00B5A3AD /* ContentView.swift in Sources */,
 				31D2111A26B20DCE001C3AC8 /* PowerData.swift in Sources */,
 				31941D46276A90C800E95A11 /* ChartsPowerData.swift in Sources */,
 				31D210FD26B19A3F001C3AC8 /* PowerCompareApp.swift in Sources */,
@@ -266,8 +306,12 @@
 				31D2111226B1E092001C3AC8 /* LineView.swift in Sources */,
 				31D2111626B1E7CC001C3AC8 /* PowerView.swift in Sources */,
 				31D2111C26B2FD59001C3AC8 /* DeviceListView.swift in Sources */,
+				31B654EB278F895300B5A3AD /* Modifiers.swift in Sources */,
+				3131E498277291FD00581A1E /* FrameSize.swift in Sources */,
+				3131E49A2772938500581A1E /* DataView.swift in Sources */,
+				311E1623276C0E880097B1B5 /* ChartsPowerView.swift in Sources */,
 				310B5EB626D4546700C984F3 /* hrdata.txt in Sources */,
-				31941D49276AB77B00E95A11 /* ChartsPowerView.swift in Sources */,
+				31941D49276AB77B00E95A11 /* ChartsPowerGraph.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

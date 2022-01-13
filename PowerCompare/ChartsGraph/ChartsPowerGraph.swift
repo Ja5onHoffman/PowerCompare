@@ -6,14 +6,13 @@
 //
 
 import Foundation
-import Charts
 import SwiftUI
+import Charts
 
-struct ChartsPowerView: UIViewRepresentable {
+struct ChartsPowerGraph: UIViewRepresentable {
     
     var powerData1: [ChartDataEntry]
     var powerData2: [ChartDataEntry]
-
     let chart = LineChartView()
 
     func makeUIView(context: Context) -> LineChartView {
@@ -66,8 +65,8 @@ struct ChartsPowerView: UIViewRepresentable {
     }
     
     class Coordinator: NSObject, ChartViewDelegate {
-        let parent: ChartsPowerView
-        init(parent: ChartsPowerView) {
+        let parent: ChartsPowerGraph
+        init(parent: ChartsPowerGraph) {
             self.parent = parent
         }
         
@@ -85,13 +84,14 @@ struct ChartsPowerView: UIViewRepresentable {
 //    }
 }
 
-struct ChartsPowerView_Previews: PreviewProvider {
+struct ChartsPowerGraph_Previews: PreviewProvider {
     static var previews: some View {
-//        ChartsPowerView(powerData1: PowerData.chartPowerData(PowerData.powerSample))
-        ChartsPowerView(
-            powerData1: ChartsPowerData.powerData(ChartsPowerData.powerSample),
-            powerData2: ChartsPowerData.powerData(ChartsPowerData.powerSample2)
-        )
+//        TestChartView(powerData1: PowerData.chartPowerData(PowerData.powerSample))
+        ChartsPowerGraph(
+            powerData1: ChartsPowerData.chartPowerData(ChartsPowerData.powerSample),
+            powerData2: ChartsPowerData.chartPowerData(ChartsPowerData.powerSample2)
+            )
     }
 }
+
     

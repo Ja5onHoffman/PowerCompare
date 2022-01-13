@@ -101,10 +101,8 @@ struct PowerView: View {
                         .frame(maxWidth: .infinity, minHeight: 60)
                         .background(RoundedRectangle(cornerRadius: 50)
                                         .fill(Color.green))
-                    ChartsPowerView(
-                        powerData1: ChartsPowerData.powerData(ChartsPowerData.powerSample),
-                        powerData2: ChartsPowerData.powerData(ChartsPowerData.powerSample2)
-                    ).aspectRatio(1.5, contentMode: .fill)
+//                    ChartsPowerView()
+//                        .aspectRatio(1.5, contentMode: .fill)
 //                    LineView()
 //                        .aspectRatio(1.5, contentMode: .fit)
                 }.padding(EdgeInsets(top: 10, leading: 0, bottom: 0, trailing: 0))
@@ -130,6 +128,24 @@ struct PowerView: View {
         
 
     }
+    
+    func connectButtonAction() {
+        self.showList.toggle()
+        self.sheet(isPresented: $showList, onDismiss: {
+                    self.$showList.wrappedValue = false
+                }, content: {
+                    DeviceListView(isPresented: $showList)
+                })
+    }
+    
+//    Button("Connect Devices") {
+//        self.showList.toggle()
+//    }
+//    .sheet(isPresented: $showList, onDismiss: {
+//        self.$showList.wrappedValue = false
+//    }, content: {
+//        DeviceListView(isPresented: $showList)
+//    }).padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 10.0))
 }
 
 

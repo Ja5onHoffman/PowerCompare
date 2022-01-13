@@ -26,6 +26,10 @@
 	<string>Uses Bluetooth to read device data</string>
 	<key>NSBluetoothPeripheralUsageDescription</key>
 	<string>Enable Bluetooth inorder to connect to peripherals.</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>digital-7.regular.ttf</string>
+	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
