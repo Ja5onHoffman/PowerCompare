@@ -107,7 +107,6 @@
 			isa = PBXGroup;
 			children = (
 				310B5EB526D4546700C984F3 /* hrdata.txt */,
-				31D2110026B19A41001C3AC8 /* Assets.xcassets */,
 				31D210FB26B19A3F001C3AC8 /* PowerCompare */,
 				31D210FA26B19A3F001C3AC8 /* Products */,
 				0AECF8921D44F277946AF692 /* Pods */,
@@ -143,6 +142,7 @@
 				3131E4992772938500581A1E /* DataView.swift */,
 				3131E497277291FD00581A1E /* FrameSize.swift */,
 				3131E49B277A8F5C00581A1E /* ConnectButton.swift */,
+				31D2110026B19A41001C3AC8 /* Assets.xcassets */,
 				31D2110526B19A41001C3AC8 /* Info.plist */,
 			);
 			path = PowerCompare;

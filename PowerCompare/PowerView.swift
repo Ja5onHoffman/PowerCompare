@@ -103,8 +103,8 @@ struct PowerView: View {
                                         .fill(Color.green))
 //                    ChartsPowerView()
 //                        .aspectRatio(1.5, contentMode: .fill)
-//                    LineView()
-//                        .aspectRatio(1.5, contentMode: .fit)
+                    LineView()
+                        .aspectRatio(1.5, contentMode: .fit)
                 }.padding(EdgeInsets(top: 10, leading: 0, bottom: 0, trailing: 0))
                 
                 HStack {

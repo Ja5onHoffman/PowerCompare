@@ -14,7 +14,7 @@ struct DataView: View {
     var body: some View {
         VStack(alignment: .center, spacing: 8) {
             Text(title).font(.title2)
-            Text(String(format: "%.1f W", data))
+            Text(String(format: "%.1f W", data)).modifier(Data())
         }.frame(minWidth: 50, idealWidth: 250, maxWidth: 300, minHeight: 50, idealHeight: 250, maxHeight: 300, alignment: .center)
             .frameSize()
     }

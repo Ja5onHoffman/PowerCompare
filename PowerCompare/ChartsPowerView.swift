@@ -34,15 +34,28 @@ struct ChartsPowerView: View {
                     .frameSize()
                     .modifier(AvenirHeading())
                 Spacer()
-                Button("Connect Devices") {
-                    self.showList.toggle()
-                }.sheet(isPresented: $showList, onDismiss: {
-                    self.$showList.wrappedValue = false
-                }, content: {
-                    DeviceListView(isPresented: $showList)
-                }).padding(EdgeInsets(top: 0.0, leading: 0.0, bottom: 0.0, trailing: 16.0))
-                    
-            }.padding(EdgeInsets(top: 0.0, leading: 16.0, bottom: 0.0, trailing: 0.0))
+                // If not connected, show connect devices button
+                if !deviceConnected {
+                    Button("Connect Devices") {
+                        self.showList.toggle()
+                    }.sheet(isPresented: $showList, onDismiss: {
+                        self.$showList.wrappedValue = false
+                    }, content: {
+                        DeviceListView(isPresented: $showList)
+                    }).buttonStyle(ConnectDevices(connected: deviceConnected))
+                } else {
+                    Button("Disconnect") {
+                        self.showList.toggle()
+                        bt.disconnectAll()
+                    }
+                    .sheet(isPresented: $showList, onDismiss: {
+                        self.$showList.wrappedValue = false
+                    }, content: {
+                        DeviceListView(isPresented: $showList)
+                    }).buttonStyle(ConnectDevices(connected: deviceConnected))
+                }
+            }.padding(EdgeInsets(top: 16.0, leading: 8.0, bottom: 0.0, trailing: 8.0))
+            
                 VStack {
                     VStack {
                         HStack(alignment: .center) {
@@ -93,6 +106,17 @@ struct ChartsPowerView: View {
 //    private var showDevices: Void {
 //
 //    }
+}
+
+struct ConnectDevices: ButtonStyle {
+    @State var connected: Bool
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .padding(8.0)
+            .background($connected.wrappedValue ? Color.red : Color.blue)
+            .clipShape(Capsule())
+            .foregroundColor(.white)
+    }
 }
 
 
