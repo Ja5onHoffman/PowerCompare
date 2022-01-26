@@ -5,9 +5,8 @@
 //  Created by Jason Hoffman on 12/14/21.
 //
 
-import Foundation
 import Charts
-
+import SwiftUI
 
 struct ChartsPowerData {
     var watts: Double
@@ -76,4 +75,32 @@ struct ChartsPowerData {
         ChartsPowerData(watts: 200.0),
         ChartsPowerData(watts: 200.0)
     ]
+}
+
+// Only for export
+struct ChartsPowerArray: Identifiable {
+    var id = UUID()
+    var values = [ChartsPowerData(watts: 0.0)]
+    lazy var average: Double = {
+        let sum = values.reduce(0.0) { a, b in
+            return a + b.watts
+        }
+        return Double(sum) / Double(values.count)
+    }()
+    
+    mutating func addValue(_ val: ChartsPowerData) {
+        values.append(val)
+    }
+    
+    func zero() -> ChartsPowerData {
+        return ChartsPowerData(watts: 0)
+    }
+}
+
+
+extension ChartsPowerData  {
+    static func + (left: ChartsPowerData, right: ChartsPowerData) -> Double {
+        // Double instead of ChartsPowerData is easier
+        return left.watts + right.watts
+    }
 }

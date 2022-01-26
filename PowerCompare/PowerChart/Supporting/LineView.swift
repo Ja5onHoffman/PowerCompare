@@ -15,7 +15,8 @@ struct LineView: View {
     var data1: [CGFloat] {
         var d = [CGFloat]()
         for i in bt.p1Values.values {
-            d.append(CGFloat(i.value))
+            // Broken with Charts change
+//            d.append(CGFloat(i.value))
         }
         return d
     }
@@ -23,7 +24,8 @@ struct LineView: View {
     var data2: [CGFloat] {
         var d = [CGFloat]()
         for i in bt.p2Values.values {
-            d.append(CGFloat(i.value))
+            // Broken with Charts change
+//            d.append(CGFloat(i.value))
         }
         return d
     }

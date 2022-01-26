@@ -42,11 +42,11 @@ struct ChartsPowerView: View {
                         self.$showList.wrappedValue = false
                     }, content: {
                         DeviceListView(isPresented: $showList)
-                    }).buttonStyle(ConnectDevices(connected: deviceConnected))
+                    })/*.buttonStyle(ConnectDevices(connected: $deviceConnected.wrappedValue))*/
                 } else {
                     Button("Disconnect") {
                         self.showList.toggle()
-                        bt.disconnectAll()
+//                        bt.disconnectAll()
                     }
                     .sheet(isPresented: $showList, onDismiss: {
                         self.$showList.wrappedValue = false
@@ -67,8 +67,11 @@ struct ChartsPowerView: View {
                         }
                         HStack(alignment: .center, spacing: 8.0) {
                             VStack(alignment: .center, spacing: 16.0) {
-                                DataView(title: "Current", data: 200.0)
-                                DataView(title: "Average", data: 200.0)
+//                                DataView(title: "Current", data: 200.0)
+//                                DataView(title: "Average", data: 200.0)
+//                                DataView(title: "Current", data: Double(bt.hrInstant1))
+                                DataView(title: "Current", data: bt.p1Power.watts)
+//                                DataView(title: "Average", data: bt.p1Values.average)
                             }
                             VStack {
                                 DataView(title: "Difference", data: 200.0)
@@ -99,13 +102,9 @@ struct ChartsPowerView: View {
                         .padding(EdgeInsets(top: 0.0, leading: 8.0, bottom: 8.0, trailing: 8.0))
                         .frameSize()
                 }
-//                }.navigationTitle(Text("WattBae"))
         }
+        
     }
-//
-//    private var showDevices: Void {
-//
-//    }
 }
 
 struct ConnectDevices: ButtonStyle {
