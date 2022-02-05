@@ -2,161 +2,125 @@
 //  PowerView.swift
 //  PowerCompare
 //
-//  Created by Jason Hoffman on 7/28/21.
+//  Created by Jason Hoffman on 12/16/21.
 //
 
 import SwiftUI
 import CoreBluetooth
 
-let powerMeterCBUUID = CBUUID(string: "0x1818")
-let powerMeasurementCharacteristicCBUUID = CBUUID(string: "0x2A63")
-
-
 struct PowerView: View {
     
-    let sampleData: [Double] = [500.0, 200.0, 200.0, 600.0, 800.0, 100.0, 200.0, 300.0, 200.0]
-    
     @EnvironmentObject var bt: Bluetooth
-    @State var showModal = false
+    @State var showModal = true
     @State var showList = false
-    var deviceOne = ""
-    var deviceTwo = ""
     
     // placeholder
     @State var deviceConnected = false
     
+    let sampleData1: [Double] = [500.0, 200.0, 200.0, 600.0, 800.0, 100.0, 200.0, 300.0, 200.0]
+    
+    private var columns: [GridItem] = [
+        GridItem(.adaptive(minimum: 100.0, maximum: 300.0), spacing: 16, alignment: .center),
+        GridItem(.adaptive(minimum: 100.0, maximum: 300.0), spacing: 16, alignment: .center),
+        GridItem(.adaptive(minimum: 100.0, maximum: 300.0), spacing: 16, alignment: .center)
+
+    ]
+    
     var body: some View {
+
         VStack {
-                if deviceConnected {
-                    HStack {
-                        Spacer()
-                        Button("Disconnect") {
-                            self.showList.toggle()
-                            bt.disconnectAll()
-                        }
-                        .sheet(isPresented: $showList, onDismiss: {
-                            self.$showList.wrappedValue = false
-                        }, content: {
-                            DeviceListView(isPresented: $showList)
-                        })
-                        .font(.bold(.body)())
-                    }
+            HStack(alignment: .lastTextBaseline) {
+                Text("WattBae")
+                    .frameSize()
+                    .modifier(AvenirHeading())
+                Spacer()
+                // If not connected, show connect devices button
+                if !deviceConnected {
+                    Button("Connect Devices") {
+                        self.showList.toggle()
+                    }.sheet(isPresented: $showList, onDismiss: {
+                        self.$showList.wrappedValue = false
+                    }, content: {
+                        DeviceListView(isPresented: $showList)
+                    })/*.buttonStyle(ConnectDevices(connected: $deviceConnected.wrappedValue))*/
                 } else {
-                    HStack {
-                        Spacer()
-                        if bt.deviceConnected {
-                            Button("Disconnect") {
-                                self.showList.toggle()
-                                bt.disconnectAll()
-                            }
-                            .sheet(isPresented: $showList, onDismiss: {
-                                self.$showList.wrappedValue = false
-                            }, content: {
-                                DeviceListView(isPresented: $showList)
-                            }).padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 10.0))
-                        } else {
-                            Button("Connect Devices") {
-                                self.showList.toggle()
-                            }
-                            .sheet(isPresented: $showList, onDismiss: {
-                                self.$showList.wrappedValue = false
-                            }, content: {
-                                DeviceListView(isPresented: $showList)
-                            }).padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 10.0))
-                        }
+                    Button("Disconnect") {
+                        self.showList.toggle()
+//                        bt.disconnectAll()
                     }
+                    .sheet(isPresented: $showList, onDismiss: {
+                        self.$showList.wrappedValue = false
+                    }, content: {
+                        DeviceListView(isPresented: $showList)
+                    }).buttonStyle(ConnectDevices(connected: deviceConnected))
                 }
+            }.padding(EdgeInsets(top: 16.0, leading: 8.0, bottom: 0.0, trailing: 8.0))
             
-            VStack {
                 VStack {
-                    HStack {
-                        Text(bt.p1Name!)
-                            .font(.title2)
-                            .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 0))
-                        Spacer()
+                    VStack {
+                        HStack(alignment: .center) {
+                            Text("Device 1")
+                                .modifier(AvenirTitle())
+                            Spacer()
+                            Text("Device 2")
+                                .modifier(AvenirTitle())
+                        }
+                        HStack(alignment: .center, spacing: 8.0) {
+                            VStack(alignment: .center, spacing: 16.0) {
+                                DataView(title: "Current", data: bt.p1Power.watts)
+                                DataView(title: "Average", data: bt.p1Values.average)
+                            }
+                            VStack {
+                                DataView(title: "Difference", data: bt.powerDif().0)
+                                AverageGauge()
+                            }
+                            VStack(alignment: .center, spacing: 16.0) {
+                                DataView(title: "Current", data: bt.p2Power.watts)
+                                DataView(title: "Average", data: bt.p2Values.average)
+                            }
+                        }.frameSize()
                     }
-//                    Text(String(describing: bt.hrInstant1))
-                    // Broken with Charts change
-//                    Text(String(describing: bt.p1Power.value))
-                        .foregroundColor(.white)
-                        .font(.largeTitle)
-                        .aspectRatio(contentMode: .fit)
-                        .frame(maxWidth: .infinity, minHeight: 50)
-                        .background(RoundedRectangle(cornerRadius: 50)
-                                    .fill(Color.blue))
-
+                    
+                    ChartsPowerGraph(
+                        powerData1: bt.p1Values.chartsPower,
+                        powerData2: bt.p2Values.chartsPower
+                    ).aspectRatio(1.0, contentMode: .fill)
+                        .padding(EdgeInsets(top: 0.0, leading: 8.0, bottom: 8.0, trailing: 8.0))
+                        .frameSize()
                 }
-                
-                VStack {
-                    HStack {
-                        Text(bt.p2Name!)
-                            .font(.title2)
-                            .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 0))
-                        Spacer()
-                    }
-                    // Broken with Charts change
-//                    Text(String(describing: bt.p2Power.value))
-//                    Text(String(describing: bt.hrInstant2))
-                        .foregroundColor(.white)
-                        .font(.largeTitle)
-                        .aspectRatio(contentMode: .fit)
-                        .frame(maxWidth: .infinity, minHeight: 60)
-                        .background(RoundedRectangle(cornerRadius: 50)
-                                        .fill(Color.green))
-//                    ChartsPowerView()
-//                        .aspectRatio(1.5, contentMode: .fill)
-                    LineView()
-                        .aspectRatio(1.5, contentMode: .fit)
-                }.padding(EdgeInsets(top: 10, leading: 0, bottom: 0, trailing: 0))
-                
-                HStack {
-                    Text("Difference")
-                        .font(.title)
-                        .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 0))
-                }
-                Text(String(describing: bt.powerDif().0))
-                    .foregroundColor(.white)
-                    .font(.system(size: 50))
-                    .aspectRatio(contentMode: .fill)
-                    .frame(maxWidth: .infinity, minHeight: 200
-                    )
-                    .background(RoundedRectangle(cornerRadius: 50)
-                                    .fill(bt.powerDif().1))
-            }
-    
-            }.fullScreenCover(isPresented: $showModal, content: {
-                WelcomeModal(showingModal: $showModal)
-            })
+        }.fullScreenCover(isPresented: $showModal, content: {
+            WelcomeModal(showingModal: $showModal)
+        })
         
+    }
+}
 
+struct ConnectDevices: ButtonStyle {
+    @State var connected: Bool
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .padding(8.0)
+            .background($connected.wrappedValue ? Color.red : Color.blue)
+            .clipShape(Capsule())
+            .foregroundColor(.white)
     }
-    
-    func connectButtonAction() {
-        self.showList.toggle()
-        self.sheet(isPresented: $showList, onDismiss: {
-                    self.$showList.wrappedValue = false
-                }, content: {
-                    DeviceListView(isPresented: $showList)
-                })
-    }
-    
-//    Button("Connect Devices") {
-//        self.showList.toggle()
-//    }
-//    .sheet(isPresented: $showList, onDismiss: {
-//        self.$showList.wrappedValue = false
-//    }, content: {
-//        DeviceListView(isPresented: $showList)
-//    }).padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 10.0))
 }
 
 
-
-struct ContentView_Previews: PreviewProvider {
+struct PowerView_Previews: PreviewProvider {
     static var previews: some View {
-        PowerView()
-            .environmentObject(Bluetooth())
-//            .environmentObject(PowerData())
+        Group {
+            PowerView()
+                .environmentObject(Bluetooth())
+                .previewDevice(PreviewDevice(rawValue: "iPhone 12 Pro"))
+                .previewDisplayName("iPhone 12 Pro")
+//            PowerView()
+//                .previewDevice(PreviewDevice(rawValue: "iPhone 12 Pro Max"))
+//                .previewDisplayName("iPhone 12 Pro Max")
+//
+//            PowerView()
+//                .previewDevice(PreviewDevice(rawValue: "iPhone 13 Pro Max"))
+//                .previewDisplayName("iPhone 13 Pro Max")
+        }
     }
 }
-

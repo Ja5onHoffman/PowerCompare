@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+// NO LONGER USED
+
 enum Smoothing {
     case three
     case ten

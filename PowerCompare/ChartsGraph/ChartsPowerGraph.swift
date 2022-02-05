@@ -88,8 +88,8 @@ struct ChartsPowerGraph_Previews: PreviewProvider {
     static var previews: some View {
 //        TestChartView(powerData1: PowerData.chartPowerData(PowerData.powerSample))
         ChartsPowerGraph(
-            powerData1: ChartsPowerData.chartPowerData(ChartsPowerData.powerSample),
-            powerData2: ChartsPowerData.chartPowerData(ChartsPowerData.powerSample2)
+            powerData1: PowerData.chartPowerData(PowerData.powerSample),
+            powerData2: PowerData.chartPowerData(PowerData.powerSample2)
             )
     }
 }

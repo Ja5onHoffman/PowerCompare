@@ -34,8 +34,8 @@ open class Bluetooth: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, 
     @Published var p1: CBPeripheral? = nil
     @Published var p2: CBPeripheral? = nil 
 
-    @Published var p1Values = ChartsPowerArray()
-    @Published var p2Values = ChartsPowerArray()
+    @Published var p1Values = PowerArray()
+    @Published var p2Values = PowerArray()
     
     @Published var hrValues1 = [Int]()
     @Published var hrInstant1 = 0
@@ -43,8 +43,8 @@ open class Bluetooth: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, 
     @Published var hrValues2 = [Int]()
     @Published var hrInstant2 = 0
     
-    @Published var p1Power = ChartsPowerData(watts: 0.0)
-    @Published var p2Power = ChartsPowerData(watts: 0.0)
+    @Published var p1Power = PowerData(watts: 0.0)
+    @Published var p2Power = PowerData(watts: 0.0)
     
     @Published var p1Name: String? = "Awaiting Connection"
     @Published var p2Name: String? = "Awaiting Connection"
@@ -245,9 +245,9 @@ open class Bluetooth: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, 
     
 //  Good power explanation
 //  https://stackoverflow.com/questions/54427537/understanding-ble-characteristic-values-for-cycle-power-measurement-0x2a63
-    func powerMeasurement(from characteristic: CBCharacteristic) -> ChartsPowerData {
+    func powerMeasurement(from characteristic: CBCharacteristic) -> PowerData {
 
-        guard let characteristicData = characteristic.value else { return ChartsPowerData(watts: 0.0) }
+        guard let characteristicData = characteristic.value else { return PowerData(watts: 0.0) }
 //        print("characteristicData \(characteristicData)")
         let byteArray = [UInt8](characteristicData)
         // Power comes through in two bytes
@@ -256,7 +256,7 @@ open class Bluetooth: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, 
         let lsb = byteArray[2]
         let pRaw = (Int16(msb) << 8) | Int16(lsb)
         print("pRaw \(pRaw)")
-        let p = ChartsPowerData(watts: Double(pRaw))
+        let p = PowerData(watts: Double(pRaw))
         return p
     }
     

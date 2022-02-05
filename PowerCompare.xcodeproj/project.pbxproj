@@ -9,13 +9,13 @@
 /* Begin PBXBuildFile section */
 		310B5EB426CED44700C984F3 /* LineGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310B5EB326CED44700C984F3 /* LineGraph.swift */; };
 		310B5EB626D4546700C984F3 /* hrdata.txt in Sources */ = {isa = PBXBuildFile; fileRef = 310B5EB526D4546700C984F3 /* hrdata.txt */; };
-		311E1623276C0E880097B1B5 /* ChartsPowerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311E1622276C0E880097B1B5 /* ChartsPowerView.swift */; };
+		311E1623276C0E880097B1B5 /* PowerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311E1622276C0E880097B1B5 /* PowerView.swift */; };
 		3131E498277291FD00581A1E /* FrameSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3131E497277291FD00581A1E /* FrameSize.swift */; };
 		3131E49A2772938500581A1E /* DataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3131E4992772938500581A1E /* DataView.swift */; };
 		3131E49C277A8F5C00581A1E /* ConnectButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3131E49B277A8F5C00581A1E /* ConnectButton.swift */; };
 		317F62DF27A22A7A0086D213 /* AverageGauge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317F62DE27A22A7A0086D213 /* AverageGauge.swift */; };
 		317F62E227A878B40086D213 /* GaugeProgressViewStyle in Frameworks */ = {isa = PBXBuildFile; productRef = 317F62E127A878B40086D213 /* GaugeProgressViewStyle */; };
-		31941D46276A90C800E95A11 /* ChartsPowerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31941D45276A90C800E95A11 /* ChartsPowerData.swift */; };
+		31941D46276A90C800E95A11 /* PowerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31941D45276A90C800E95A11 /* PowerData.swift */; };
 		31941D49276AB77B00E95A11 /* ChartsPowerGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31941D48276AB77B00E95A11 /* ChartsPowerGraph.swift */; };
 		31B654E8278F87EF00B5A3AD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B654E7278F87EF00B5A3AD /* ContentView.swift */; };
 		31B654EB278F895300B5A3AD /* Modifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B654EA278F895300B5A3AD /* Modifiers.swift */; };
@@ -24,9 +24,7 @@
 		31D2110126B19A41001C3AC8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31D2110026B19A41001C3AC8 /* Assets.xcassets */; };
 		31D2110426B19A41001C3AC8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31D2110326B19A41001C3AC8 /* Preview Assets.xcassets */; };
 		31D2111226B1E092001C3AC8 /* LineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D2111126B1E092001C3AC8 /* LineView.swift */; };
-		31D2111626B1E7CC001C3AC8 /* PowerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D2111526B1E7CC001C3AC8 /* PowerView.swift */; };
 		31D2111826B20D8C001C3AC8 /* Bluetooth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D2111726B20D8C001C3AC8 /* Bluetooth.swift */; };
-		31D2111A26B20DCE001C3AC8 /* PowerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D2111926B20DCE001C3AC8 /* PowerData.swift */; };
 		31D2111C26B2FD59001C3AC8 /* DeviceListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D2111B26B2FD59001C3AC8 /* DeviceListView.swift */; };
 		31D2111E26B2FE79001C3AC8 /* WelcomeModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D2111D26B2FE79001C3AC8 /* WelcomeModal.swift */; };
 		BBDC5DED994E9C6D39CAFB63 /* Pods_PowerCompare.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5312DB7A4564688DBFCBBE2F /* Pods_PowerCompare.framework */; };
@@ -35,12 +33,12 @@
 /* Begin PBXFileReference section */
 		310B5EB326CED44700C984F3 /* LineGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineGraph.swift; sourceTree = "<group>"; };
 		310B5EB526D4546700C984F3 /* hrdata.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = hrdata.txt; sourceTree = "<group>"; };
-		311E1622276C0E880097B1B5 /* ChartsPowerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsPowerView.swift; sourceTree = "<group>"; };
+		311E1622276C0E880097B1B5 /* PowerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerView.swift; sourceTree = "<group>"; };
 		3131E497277291FD00581A1E /* FrameSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameSize.swift; sourceTree = "<group>"; };
 		3131E4992772938500581A1E /* DataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataView.swift; sourceTree = "<group>"; };
 		3131E49B277A8F5C00581A1E /* ConnectButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectButton.swift; sourceTree = "<group>"; };
 		317F62DE27A22A7A0086D213 /* AverageGauge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AverageGauge.swift; sourceTree = "<group>"; };
-		31941D45276A90C800E95A11 /* ChartsPowerData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsPowerData.swift; sourceTree = "<group>"; };
+		31941D45276A90C800E95A11 /* PowerData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerData.swift; sourceTree = "<group>"; };
 		31941D48276AB77B00E95A11 /* ChartsPowerGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsPowerGraph.swift; sourceTree = "<group>"; };
 		31B654E7278F87EF00B5A3AD /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		31B654EA278F895300B5A3AD /* Modifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modifiers.swift; sourceTree = "<group>"; };
@@ -51,9 +49,7 @@
 		31D2110326B19A41001C3AC8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		31D2110526B19A41001C3AC8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		31D2111126B1E092001C3AC8 /* LineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineView.swift; sourceTree = "<group>"; };
-		31D2111526B1E7CC001C3AC8 /* PowerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerView.swift; sourceTree = "<group>"; };
 		31D2111726B20D8C001C3AC8 /* Bluetooth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bluetooth.swift; sourceTree = "<group>"; };
-		31D2111926B20DCE001C3AC8 /* PowerData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerData.swift; sourceTree = "<group>"; };
 		31D2111B26B2FD59001C3AC8 /* DeviceListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceListView.swift; sourceTree = "<group>"; };
 		31D2111D26B2FE79001C3AC8 /* WelcomeModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeModal.swift; sourceTree = "<group>"; };
 		5312DB7A4564688DBFCBBE2F /* Pods_PowerCompare.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PowerCompare.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -136,13 +132,11 @@
 				31B654E9278F893B00B5A3AD /* Modifiers */,
 				31D2110B26B19C42001C3AC8 /* PowerChart */,
 				31D210FC26B19A3F001C3AC8 /* PowerCompareApp.swift */,
-				31D2111526B1E7CC001C3AC8 /* PowerView.swift */,
-				311E1622276C0E880097B1B5 /* ChartsPowerView.swift */,
+				311E1622276C0E880097B1B5 /* PowerView.swift */,
 				31B654E7278F87EF00B5A3AD /* ContentView.swift */,
 				31D2111B26B2FD59001C3AC8 /* DeviceListView.swift */,
 				31D2111726B20D8C001C3AC8 /* Bluetooth.swift */,
-				31D2111926B20DCE001C3AC8 /* PowerData.swift */,
-				31941D45276A90C800E95A11 /* ChartsPowerData.swift */,
+				31941D45276A90C800E95A11 /* PowerData.swift */,
 				3131E4992772938500581A1E /* DataView.swift */,
 				3131E497277291FD00581A1E /* FrameSize.swift */,
 				317F62DE27A22A7A0086D213 /* AverageGauge.swift */,
@@ -310,18 +304,16 @@
 				31D2111826B20D8C001C3AC8 /* Bluetooth.swift in Sources */,
 				31B654E8278F87EF00B5A3AD /* ContentView.swift in Sources */,
 				317F62DF27A22A7A0086D213 /* AverageGauge.swift in Sources */,
-				31D2111A26B20DCE001C3AC8 /* PowerData.swift in Sources */,
-				31941D46276A90C800E95A11 /* ChartsPowerData.swift in Sources */,
+				31941D46276A90C800E95A11 /* PowerData.swift in Sources */,
 				31D210FD26B19A3F001C3AC8 /* PowerCompareApp.swift in Sources */,
 				310B5EB426CED44700C984F3 /* LineGraph.swift in Sources */,
 				31D2111E26B2FE79001C3AC8 /* WelcomeModal.swift in Sources */,
 				31D2111226B1E092001C3AC8 /* LineView.swift in Sources */,
-				31D2111626B1E7CC001C3AC8 /* PowerView.swift in Sources */,
 				31D2111C26B2FD59001C3AC8 /* DeviceListView.swift in Sources */,
 				31B654EB278F895300B5A3AD /* Modifiers.swift in Sources */,
 				3131E498277291FD00581A1E /* FrameSize.swift in Sources */,
 				3131E49A2772938500581A1E /* DataView.swift in Sources */,
-				311E1623276C0E880097B1B5 /* ChartsPowerView.swift in Sources */,
+				311E1623276C0E880097B1B5 /* PowerView.swift in Sources */,
 				310B5EB626D4546700C984F3 /* hrdata.txt in Sources */,
 				31941D49276AB77B00E95A11 /* ChartsPowerGraph.swift in Sources */,
 			);

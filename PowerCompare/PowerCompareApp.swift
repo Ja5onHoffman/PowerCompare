@@ -13,7 +13,7 @@ struct PowerCompareApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ChartsPowerView()
+            PowerView()
                 .environmentObject(bt)
         }
     }
