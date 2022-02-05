@@ -67,40 +67,26 @@ struct ChartsPowerView: View {
                         }
                         HStack(alignment: .center, spacing: 8.0) {
                             VStack(alignment: .center, spacing: 16.0) {
-//                                DataView(title: "Current", data: 200.0)
-//                                DataView(title: "Average", data: 200.0)
-//                                DataView(title: "Current", data: Double(bt.hrInstant1))
                                 DataView(title: "Current", data: bt.p1Power.watts)
-//                                DataView(title: "Average", data: bt.p1Values.average)
+                                DataView(title: "Average", data: bt.p1Values.average)
                             }
                             VStack {
-                                DataView(title: "Difference", data: 200.0)
-                                HStack {
-                                    // Just have one image that rotates
-                                    // Or "gauge" that goes left/right
-                                    Image("chevron")
-                                        .resizable()
-                                        .frame(width: 50, height: 50, alignment: .center)
-                                    Image("chevron")
-                                        .resizable()
-                                        .frame(width: 50, height: 50, alignment: .center)
-                                        .rotationEffect(Angle(degrees: 180.0))
-                                }.frameSize()
+                                DataView(title: "Difference", data: bt.powerDif().0)
+                                AverageGauge()
                             }
                             VStack(alignment: .center, spacing: 16.0) {
-                                DataView(title: "Current", data: 200.0)
-                                DataView(title: "Average", data: 200.0)
+                                DataView(title: "Current", data: bt.p2Power.watts)
+                                DataView(title: "Average", data: bt.p2Values.average)
                             }
                         }.frameSize()
                     }
-
-
-                    ChartsPowerGraph(
-                        powerData1: ChartsPowerData.chartPowerData(ChartsPowerData.powerSample),
-                        powerData2: ChartsPowerData.chartPowerData(ChartsPowerData.powerSample2)
-                    ).aspectRatio(1.0, contentMode: .fill)
-                        .padding(EdgeInsets(top: 0.0, leading: 8.0, bottom: 8.0, trailing: 8.0))
-                        .frameSize()
+                    
+//                    ChartsPowerGraph(
+//                        powerData1: bt.p1Values.values,
+//                        powerData2: bt.p2Values.values
+//                    ).aspectRatio(1.0, contentMode: .fill)
+//                        .padding(EdgeInsets(top: 0.0, leading: 8.0, bottom: 8.0, trailing: 8.0))
+//                        .frameSize()
                 }
         }
         

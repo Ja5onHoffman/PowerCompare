@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,6 +13,8 @@
 		3131E498277291FD00581A1E /* FrameSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3131E497277291FD00581A1E /* FrameSize.swift */; };
 		3131E49A2772938500581A1E /* DataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3131E4992772938500581A1E /* DataView.swift */; };
 		3131E49C277A8F5C00581A1E /* ConnectButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3131E49B277A8F5C00581A1E /* ConnectButton.swift */; };
+		317F62DF27A22A7A0086D213 /* AverageGauge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 317F62DE27A22A7A0086D213 /* AverageGauge.swift */; };
+		317F62E227A878B40086D213 /* GaugeProgressViewStyle in Frameworks */ = {isa = PBXBuildFile; productRef = 317F62E127A878B40086D213 /* GaugeProgressViewStyle */; };
 		31941D46276A90C800E95A11 /* ChartsPowerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31941D45276A90C800E95A11 /* ChartsPowerData.swift */; };
 		31941D49276AB77B00E95A11 /* ChartsPowerGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31941D48276AB77B00E95A11 /* ChartsPowerGraph.swift */; };
 		31B654E8278F87EF00B5A3AD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B654E7278F87EF00B5A3AD /* ContentView.swift */; };
@@ -37,6 +39,7 @@
 		3131E497277291FD00581A1E /* FrameSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameSize.swift; sourceTree = "<group>"; };
 		3131E4992772938500581A1E /* DataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataView.swift; sourceTree = "<group>"; };
 		3131E49B277A8F5C00581A1E /* ConnectButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectButton.swift; sourceTree = "<group>"; };
+		317F62DE27A22A7A0086D213 /* AverageGauge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AverageGauge.swift; sourceTree = "<group>"; };
 		31941D45276A90C800E95A11 /* ChartsPowerData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsPowerData.swift; sourceTree = "<group>"; };
 		31941D48276AB77B00E95A11 /* ChartsPowerGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsPowerGraph.swift; sourceTree = "<group>"; };
 		31B654E7278F87EF00B5A3AD /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -63,6 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				317F62E227A878B40086D213 /* GaugeProgressViewStyle in Frameworks */,
 				BBDC5DED994E9C6D39CAFB63 /* Pods_PowerCompare.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -141,6 +145,7 @@
 				31941D45276A90C800E95A11 /* ChartsPowerData.swift */,
 				3131E4992772938500581A1E /* DataView.swift */,
 				3131E497277291FD00581A1E /* FrameSize.swift */,
+				317F62DE27A22A7A0086D213 /* AverageGauge.swift */,
 				3131E49B277A8F5C00581A1E /* ConnectButton.swift */,
 				31D2110026B19A41001C3AC8 /* Assets.xcassets */,
 				31D2110526B19A41001C3AC8 /* Info.plist */,
@@ -199,6 +204,9 @@
 			dependencies = (
 			);
 			name = PowerCompare;
+			packageProductDependencies = (
+				317F62E127A878B40086D213 /* GaugeProgressViewStyle */,
+			);
 			productName = PowerCompare;
 			productReference = 31D210F926B19A3F001C3AC8 /* PowerCompare.app */;
 			productType = "com.apple.product-type.application";
@@ -226,6 +234,9 @@
 				Base,
 			);
 			mainGroup = 31D210F026B19A3F001C3AC8;
+			packageReferences = (
+				317F62E027A878B40086D213 /* XCRemoteSwiftPackageReference "GaugeProgressViewStyle" */,
+			);
 			productRefGroup = 31D210FA26B19A3F001C3AC8 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -298,6 +309,7 @@
 				3131E49C277A8F5C00581A1E /* ConnectButton.swift in Sources */,
 				31D2111826B20D8C001C3AC8 /* Bluetooth.swift in Sources */,
 				31B654E8278F87EF00B5A3AD /* ContentView.swift in Sources */,
+				317F62DF27A22A7A0086D213 /* AverageGauge.swift in Sources */,
 				31D2111A26B20DCE001C3AC8 /* PowerData.swift in Sources */,
 				31941D46276A90C800E95A11 /* ChartsPowerData.swift in Sources */,
 				31D210FD26B19A3F001C3AC8 /* PowerCompareApp.swift in Sources */,
@@ -506,6 +518,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		317F62E027A878B40086D213 /* XCRemoteSwiftPackageReference "GaugeProgressViewStyle" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kkla320/GaugeProgressViewStyle.git";
+			requirement = {
+				branch = develop;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		317F62E127A878B40086D213 /* GaugeProgressViewStyle */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 317F62E027A878B40086D213 /* XCRemoteSwiftPackageReference "GaugeProgressViewStyle" */;
+			productName = GaugeProgressViewStyle;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 31D210F126B19A3F001C3AC8 /* Project object */;
 }

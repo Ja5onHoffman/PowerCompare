@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "GaugeProgressViewStyle",
+        "repositoryURL": "https://github.com/kkla320/GaugeProgressViewStyle.git",
+        "state": {
+          "branch": "develop",
+          "revision": "02b568ef349e33cb7ceab15bdcc608b3a9af22c2",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}

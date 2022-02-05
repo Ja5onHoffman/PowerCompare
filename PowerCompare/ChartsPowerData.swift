@@ -81,12 +81,16 @@ struct ChartsPowerData {
 struct ChartsPowerArray: Identifiable {
     var id = UUID()
     var values = [ChartsPowerData(watts: 0.0)]
-    lazy var average: Double = {
-        let sum = values.reduce(0.0) { a, b in
-            return a + b.watts
+    var average: Double {
+        get {
+            let sum = values.reduce(0.0) { a, b in
+                return a + b.watts
+            }
+            return Double(sum) / Double(values.count)
         }
-        return Double(sum) / Double(values.count)
-    }()
+    }
+
+    
     
     mutating func addValue(_ val: ChartsPowerData) {
         values.append(val)
