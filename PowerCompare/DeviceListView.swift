@@ -10,17 +10,11 @@ import SwiftUI
 import Combine
 import class CoreBluetooth.CBPeripheral
 
-extension View {
-    func print(_ value: Any) -> Self {
-        Swift.print(value)
-        return self
-    }
-}
-
 struct DeviceListView: View {
     
     @Binding var isPresented: Bool
     @EnvironmentObject var bt: Bluetooth
+    @State private var count = 0
     
     func connectToPeripheralWithName(_ device: Device) {
         for i in bt.peripherals {

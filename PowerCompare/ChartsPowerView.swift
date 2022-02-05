@@ -11,7 +11,7 @@ import CoreBluetooth
 struct ChartsPowerView: View {
     
     @EnvironmentObject var bt: Bluetooth
-    @State var showModal = false
+    @State var showModal = true
     @State var showList = false
     
     // placeholder
@@ -88,7 +88,9 @@ struct ChartsPowerView: View {
                         .padding(EdgeInsets(top: 0.0, leading: 8.0, bottom: 8.0, trailing: 8.0))
                         .frameSize()
                 }
-        }
+        }.fullScreenCover(isPresented: $showModal, content: {
+            WelcomeModal(showingModal: $showModal)
+        })
         
     }
 }

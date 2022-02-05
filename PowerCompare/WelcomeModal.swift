@@ -20,7 +20,7 @@ struct WelcomeModal: View {
                 ZStack {
                     BackgroundBlurView().edgesIgnoringSafeArea(.vertical)
                     VStack(spacing: 10) {
-                        Text("Connect to a Device")
+                        Text("Welcome to WattBae")
                             .bold().padding()
                             .frame(maxWidth: .infinity)
                             .background(Color.orange)
