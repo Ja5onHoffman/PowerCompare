@@ -24,12 +24,6 @@ struct ChartsPowerData {
         }
     }
     
-    static func powerDataTwo(_ powerArray: [ChartsPowerData]) -> [ChartDataEntry] {
-        return powerArray.enumerated().map { (index, element) in
-            ChartDataEntry(x: Double(index), y: element.watts)
-        }
-    }
-    
     static var powerSample: [ChartsPowerData] = [
         ChartsPowerData(watts: 200.0),
         ChartsPowerData(watts:205.0),
@@ -89,9 +83,25 @@ struct ChartsPowerArray: Identifiable {
             return Double(sum) / Double(values.count)
         }
     }
+    
+    var chartsPower: [ChartDataEntry] {
+        return self.values.enumerated().map { (index, element) in
+            ChartDataEntry(x: Double(index), y: element.watts)
+        }
+    }
+    
+    static func chartPowerData(_ powerArray: [ChartsPowerData]) -> [ChartDataEntry] {
+        return powerArray.enumerated().map { (index, element) in
+            ChartDataEntry(x: Double(index), y: element.watts)
+        }
+    }
+    
+    static func powerDataTwo(_ powerArray: [ChartsPowerData]) -> [ChartDataEntry] {
+        return powerArray.enumerated().map { (index, element) in
+            ChartDataEntry(x: Double(index), y: element.watts)
+        }
+    }
 
-    
-    
     mutating func addValue(_ val: ChartsPowerData) {
         values.append(val)
     }

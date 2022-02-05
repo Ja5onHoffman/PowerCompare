@@ -81,12 +81,12 @@ struct ChartsPowerView: View {
                         }.frameSize()
                     }
                     
-//                    ChartsPowerGraph(
-//                        powerData1: bt.p1Values.values,
-//                        powerData2: bt.p2Values.values
-//                    ).aspectRatio(1.0, contentMode: .fill)
-//                        .padding(EdgeInsets(top: 0.0, leading: 8.0, bottom: 8.0, trailing: 8.0))
-//                        .frameSize()
+                    ChartsPowerGraph(
+                        powerData1: bt.p1Values.chartsPower,
+                        powerData2: bt.p2Values.chartsPower
+                    ).aspectRatio(1.0, contentMode: .fill)
+                        .padding(EdgeInsets(top: 0.0, leading: 8.0, bottom: 8.0, trailing: 8.0))
+                        .frameSize()
                 }
         }
         
