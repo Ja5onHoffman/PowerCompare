@@ -118,3 +118,4 @@ extension PowerData  {
         return left.watts + right.watts
     }
 }
+

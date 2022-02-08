@@ -7,9 +7,10 @@
 
 import SwiftUI
 import GaugeProgressViewStyle
+
 struct AverageGauge: View {
     
-    @State private var value = 0.5
+    @State var value: Double = 0.5
     var averageGradient: Gradient = Gradient(colors: [.red, .yellow, .green, .yellow, .red])
     
     var body: some View {
@@ -176,7 +177,7 @@ extension Angle: VectorArithmetic {
 
 struct AverageGauge_Previews: PreviewProvider {
     static var previews: some View {
-        AverageGauge()
+        AverageGauge(value: 0.5)
     }
 }
 

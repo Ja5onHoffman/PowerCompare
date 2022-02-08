@@ -19,6 +19,9 @@ open class Bluetooth: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, 
     @Published var deviceList = Set<Device>()
     @Published var deviceNames = Set<Device>()
     
+    @Published var broadcasting = false
+    
+    
 //    @Published var deviceList = [Device(name: "Wahoo Kickr"), Device(name: "Favero Assioma")]
     
     var centralManager: CBCentralManager!
@@ -49,8 +52,11 @@ open class Bluetooth: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, 
     @Published var p1Name: String? = "Awaiting Connection"
     @Published var p2Name: String? = "Awaiting Connection"
     
+    var averageDifs = [0.0]
+    @Published var normalizedAvgs = [0.5]
+    
     var devicesConnected = 0
-    var deviceConnected = false
+    @Published var deviceConnected = false
 
     public override init() {
         super.init()
@@ -85,6 +91,37 @@ open class Bluetooth: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, 
         }
     }
     
+    func avgDif() -> Double {
+        averageDifs.append(powerDif().0)
+        let sum = averageDifs.reduce(0.0) { a, b in
+            return a + b
+        }
+        addNormalizeAverage()
+        // Average of differences
+        return sum / Double(averageDifs.count)
+    }
+    
+    func addNormalizeAverage() {
+        let min = averageDifs.min()!
+        let max = averageDifs.max()!
+        
+        let normal = (averageDifs.last! - min) / (max - min)
+        normalizedAvgs.append(normal)
+    }
+    
+//    public func normalize(_ data: [Double]) -> [Double] {
+//        var normalData = [Double]()
+//        let min = data.min()!
+//        let max = data.max()!
+//
+//        for value in data {
+//            let normal = (value - min) / (max - min)
+//            normalData.append(normal)
+//        }
+//
+//        return normalData
+//    }
+    
     // For test
     func hrDif() -> (Int, Color) {
         let d = hrInstant1 - hrInstant2
@@ -92,14 +129,6 @@ open class Bluetooth: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, 
             return (d, .blue)
         } else {
             return (d, .green)
-        }
-    }
-    
-    func twoConnected() -> Bool {
-        if p1?.state == .connected && p2?.state == .connected {
-            return true
-        } else {
-            return false
         }
     }
     
@@ -134,6 +163,7 @@ open class Bluetooth: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, 
     func setDeviceNumber(_ number: Int) {
         self.deviceNumber = number
     }
+
     
 //MARK: CBCentralManagerDelegate
         
@@ -242,7 +272,7 @@ open class Bluetooth: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, 
         }
         
     }
-    
+        
 //  Good power explanation
 //  https://stackoverflow.com/questions/54427537/understanding-ble-characteristic-values-for-cycle-power-measurement-0x2a63
     func powerMeasurement(from characteristic: CBCharacteristic) -> PowerData {

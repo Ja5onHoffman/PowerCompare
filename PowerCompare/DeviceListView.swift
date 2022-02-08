@@ -20,7 +20,6 @@ struct DeviceListView: View {
         for i in bt.peripherals {
             if i.name == device.name {
                 bt.connectTo(i)
-//                bt.addPeripheral(i)
             }
         }
     }
@@ -49,7 +48,7 @@ struct DeviceListView: View {
     }
     
     private var listButtonText: Text {
-        if bt.twoConnected() {
+        if bt.deviceConnected {
             return Text("Done").fontWeight(.bold)
         } else {
             return Text("Cancel")

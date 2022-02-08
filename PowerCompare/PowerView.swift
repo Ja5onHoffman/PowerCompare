@@ -11,11 +11,11 @@ import CoreBluetooth
 struct PowerView: View {
     
     @EnvironmentObject var bt: Bluetooth
-    @State var showModal = true
+    @State var showModal = false
     @State var showList = false
     
     // placeholder
-    @State var deviceConnected = false
+    @State var deviceConnected = true
     
     let sampleData1: [Double] = [500.0, 200.0, 200.0, 600.0, 800.0, 100.0, 200.0, 300.0, 200.0]
     
@@ -25,6 +25,20 @@ struct PowerView: View {
         GridItem(.adaptive(minimum: 100.0, maximum: 300.0), spacing: 16, alignment: .center)
 
     ]
+    
+    func normalizeAverage(averageDif: Double, leftAverage: Double, rightAverage: Double) -> Double {
+        
+        let data = [leftAverage, rightAverage]
+        var normalized: Double
+        let min = data.min()!
+        let max = data.max()!
+        let dif = max - min
+        
+        normalized = (averageDif - min) / dif
+        return normalized
+        
+        
+    }
     
     var body: some View {
 
@@ -44,7 +58,7 @@ struct PowerView: View {
                         DeviceListView(isPresented: $showList)
                     })/*.buttonStyle(ConnectDevices(connected: $deviceConnected.wrappedValue))*/
                 } else {
-                    Button("Disconnect") {
+                    Button("Stop") {
                         self.showList.toggle()
 //                        bt.disconnectAll()
                     }
@@ -54,7 +68,7 @@ struct PowerView: View {
                         DeviceListView(isPresented: $showList)
                     }).buttonStyle(ConnectDevices(connected: deviceConnected))
                 }
-            }.padding(EdgeInsets(top: 16.0, leading: 8.0, bottom: 0.0, trailing: 8.0))
+            }.padding(EdgeInsets(top: 16.0, leading: 8.0, bottom: 0.0, trailing: 16.0))
             
                 VStack {
                     VStack {
@@ -72,7 +86,8 @@ struct PowerView: View {
                             }
                             VStack {
                                 DataView(title: "Difference", data: bt.powerDif().0)
-                                AverageGauge()
+                                // Need to unwrap
+                                AverageGauge(value: bt.normalizedAvgs.last!)
                             }
                             VStack(alignment: .center, spacing: 16.0) {
                                 DataView(title: "Current", data: bt.p2Power.watts)
