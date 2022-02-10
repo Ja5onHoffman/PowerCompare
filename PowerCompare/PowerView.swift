@@ -15,7 +15,7 @@ struct PowerView: View {
     @State var showList = false
     
     // placeholder
-    @State var deviceConnected = true
+    @State var deviceConnected = false
     
     let sampleData1: [Double] = [500.0, 200.0, 200.0, 600.0, 800.0, 100.0, 200.0, 300.0, 200.0]
     
@@ -56,7 +56,7 @@ struct PowerView: View {
                         self.$showList.wrappedValue = false
                     }, content: {
                         DeviceListView(isPresented: $showList)
-                    })/*.buttonStyle(ConnectDevices(connected: $deviceConnected.wrappedValue))*/
+                    }).buttonStyle(ConnectDevices(connected: $deviceConnected.wrappedValue))
                 } else {
                     Button("Stop") {
                         self.showList.toggle()
@@ -85,7 +85,7 @@ struct PowerView: View {
                                 DataView(title: "Average", data: bt.p1Values.average)
                             }
                             VStack {
-                                DataView(title: "Difference", data: bt.powerDif().0)
+                                DataView(title: "Difference", data: bt.instantDifference)
                                 // Need to unwrap
                                 AverageGauge(value: bt.normalizedAvgs.last!)
                             }

@@ -10,7 +10,7 @@ import GaugeProgressViewStyle
 
 struct AverageGauge: View {
     
-    @State var value: Double = 0.5
+    var value: Double = 0.5
     var averageGradient: Gradient = Gradient(colors: [.red, .yellow, .green, .yellow, .red])
     
     var body: some View {

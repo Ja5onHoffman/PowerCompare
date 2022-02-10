@@ -52,8 +52,10 @@ open class Bluetooth: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, 
     @Published var p1Name: String? = "Awaiting Connection"
     @Published var p2Name: String? = "Awaiting Connection"
     
-    var averageDifs = [0.0]
+    var difsArray = [0.0]
     @Published var normalizedAvgs = [0.5]
+    @Published var averageDifference = 0.0
+    @Published var instantDifference = 0.0
     
     var devicesConnected = 0
     @Published var deviceConnected = false
@@ -82,30 +84,25 @@ open class Bluetooth: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, 
         centralManager.stopScan()
     }
     
-    func powerDif() -> (Double, Color) {
-        let d = p1Power.watts - p2Power.watts
-        if d > 0 {
-            return (d, .blue)
-        } else {
-            return (d, .green)
-        }
-    }
-    
-    func avgDif() -> Double {
-        averageDifs.append(powerDif().0)
-        let sum = averageDifs.reduce(0.0) { a, b in
+    func powerDif() {
+        instantDifference = p1Power.watts - p2Power.watts
+        // Add difference to array
+        difsArray.append(instantDifference)
+        // Calculate average difference
+        let sum = difsArray.reduce(0.0) { a, b in
             return a + b
         }
+        averageDifference = sum / Double(difsArray.count)
+        // Calc and add normalized avg
         addNormalizeAverage()
-        // Average of differences
-        return sum / Double(averageDifs.count)
     }
     
     func addNormalizeAverage() {
-        let min = averageDifs.min()!
-        let max = averageDifs.max()!
+        let min = difsArray.min()!
+        let max = difsArray.max()!
         
-        let normal = (averageDifs.last! - min) / (max - min)
+        let normal = (difsArray.last! - min) / (max - min)
+        print(normal)
         normalizedAvgs.append(normal)
     }
     
@@ -271,6 +268,7 @@ open class Bluetooth: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, 
             print("Unhandled Characteristic UUID: \(characteristic.uuid)")
         }
         
+        powerDif()
     }
         
 //  Good power explanation
