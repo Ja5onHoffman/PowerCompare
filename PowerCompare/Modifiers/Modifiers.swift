@@ -20,8 +20,19 @@ struct AvenirTitle: ViewModifier {
     var size: CGFloat = 24
     func body(content: Content) -> some View {
         content
+            .lineLimit(1)
             .font(.custom("AvenirNext-Regular", size: size))
             .padding(EdgeInsets(top: 0.0, leading: 16.0, bottom: 0.0, trailing: 16.0))
+    }
+}
+
+struct AvenirDevice: ViewModifier {
+    var size: CGFloat = 18
+    func body(content: Content) -> some View {
+            content
+                .lineLimit(1)
+                .font(.custom("AvenirNext-Bold", size: size))
+                .padding(EdgeInsets(top: 0.0, leading: 8.0, bottom: 0.0, trailing: 8.0))
     }
 }
 

@@ -148,10 +148,16 @@ open class Bluetooth: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, 
     
     func disconnect(_ peripheral: CBPeripheral) {
         centralManager.cancelPeripheralConnection(peripheral)
+        
+        if peripherals.count < 1 {
+            deviceConnected = false
+        }
     }
     
     func disconnectAll() {
         for p in peripherals {
+            p1Name = "Awaiting Connection"
+            p2Name = "AwaitingConnection"
             centralManager.cancelPeripheralConnection(p)
         }
         deviceConnected = false
@@ -292,11 +298,11 @@ open class Bluetooth: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, 
         // MARK: Save peripherals as dictionary and match with peripherals[periipheral.name]
         if let p = peripherals.firstIndex(of: peripheral) {
             // Don't necessarily want to remove
-//            peripherals.remove(at: p)
+            peripherals.remove(at: p)
             for i in deviceList {
                 if i.name == peripheral.name {
                     i.connected = false
-//                    deviceList.remove(i)
+                    deviceList.remove(i)
                 }
             }
         }

@@ -17,6 +17,7 @@ struct PowerView: View {
     // placeholder
     @State var deviceConnected = false
     
+    
     let sampleData1: [Double] = [500.0, 200.0, 200.0, 600.0, 800.0, 100.0, 200.0, 300.0, 200.0]
     
     private var columns: [GridItem] = [
@@ -49,7 +50,7 @@ struct PowerView: View {
                     .modifier(AvenirHeading())
                 Spacer()
                 // If not connected, show connect devices button
-                if !deviceConnected {
+                if !bt.deviceConnected {
                     Button("Connect Devices") {
                         self.showList.toggle()
                     }.sheet(isPresented: $showList, onDismiss: {
@@ -60,6 +61,8 @@ struct PowerView: View {
                 } else {
                     Button("Stop") {
                         self.showList.toggle()
+                        
+                        // From here bring up summary and way to export data
 //                        bt.disconnectAll()
                     }
                     .sheet(isPresented: $showList, onDismiss: {
@@ -72,12 +75,11 @@ struct PowerView: View {
             
                 VStack {
                     VStack {
-                        HStack(alignment: .center) {
-                            Text("Device 1")
-                                .modifier(AvenirTitle())
-                            Spacer()
-                            Text("Device 2")
-                                .modifier(AvenirTitle())
+                        HStack {
+                            Text(bt.p1Name!)
+                                .modifier(AvenirDevice())
+                            Text(bt.p2Name!)
+                                .modifier(AvenirDevice())
                         }
                         HStack(alignment: .center, spacing: 8.0) {
                             VStack(alignment: .center, spacing: 16.0) {
