@@ -69,7 +69,7 @@ struct PowerView: View {
                         self.$showList.wrappedValue = false
                     }, content: {
                         DeviceListView(isPresented: $showList)
-                    }).buttonStyle(ConnectDevices(connected: deviceConnected))
+                    }).buttonStyle(ConnectDevices(connected: bt.deviceConnected))
                 }
             }.padding(EdgeInsets(top: 16.0, leading: 8.0, bottom: 0.0, trailing: 16.0))
             
@@ -116,7 +116,7 @@ struct ConnectDevices: ButtonStyle {
     @State var connected: Bool
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .padding(8.0)
+            .padding($connected.wrappedValue ? 16.0 : 8.0)
             .background($connected.wrappedValue ? Color.red : Color.blue)
             .clipShape(Capsule())
             .foregroundColor(.white)
